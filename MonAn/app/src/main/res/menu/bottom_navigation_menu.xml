@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/btnTrangChu"
+        android:enabled="true"
+        android:icon="@drawable/trangchu"
+        android:title="Trang Chủ"/>
+    <item
+        android:id="@+id/btnThucDon"
+        android:enabled="true"
+        android:icon="@drawable/menu"
+        android:title="Thực đơn"/>
+
+    <item
+        android:id="@+id/btnQuanLy"
+        android:enabled="true"
+        android:icon="@drawable/employee"
+        android:title="Quản lý"/>
+    <item
+        android:id="@+id/btnThoat"
+        android:enabled="true"
+        android:icon="@drawable/exit_ct"
+        android:title="Thoát ứng dụng"/>
+
+</menu>

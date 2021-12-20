@@ -1,15 +1,21 @@
 package com.example.monan;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,17 +42,37 @@ public class MonAnActivity extends AppCompatActivity {
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
     MonAnAdapter adapterMonAn;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mon_an);
 
         lvMonAn = (ListView) findViewById(R.id.listviewMonAn);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_action_menu);
+        toolbar.setTitle("Thực đơn");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+                navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            }
+        });
+
         arrayMonAn = new ArrayList<>();
         adapterMonAn = new MonAnAdapter(MonAnActivity.this, R.layout.dong_mon_an, arrayMonAn);
         lvMonAn.setAdapter(adapterMonAn);
 
         GetData(urlGetData);
+
+
     }
 
     private void GetData(String url){
@@ -111,6 +138,52 @@ public class MonAnActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+    private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new NavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.btnTrangChu:
+                    Intent intentTrangChu = new Intent(MonAnActivity.this, MainActivity.class);
+                    startActivity(intentTrangChu);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnThucDon:
+                    Intent intentThucDon = new Intent(MonAnActivity.this, MonAnActivity.class);
+                    startActivity(intentThucDon);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnQuanLy:
+                    Intent intentQuanLy = new Intent(MonAnActivity.this, AddMonAnActivity.class);
+                    startActivity(intentQuanLy);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnThoat:
+                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(MonAnActivity.this,R.style.Theme_Design_Light);
+                    dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
+                    dialogThoat.setMessage("Bạn có chắc chắn?");
+                    dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            onBackPressed();
+                        }
+                    });
+                    dialogThoat.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialogThoat.show();
+                    drawerLayout.closeDrawers();
+                    return true;
+            }
+            return false;
+        }
+    };
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -123,7 +196,7 @@ public class MonAnActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.add_student, menu);
+        getMenuInflater().inflate(R.menu.add_mon_an, menu);
         return super.onCreateOptionsMenu(menu);
     }
 }
