@@ -10,11 +10,13 @@
 
    <androidx.drawerlayout.widget.DrawerLayout
        android:id="@+id/drawerLayout"
+       android:background="#E3DADA"
        android:fitsSystemWindows="true"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
       <LinearLayout
+
           android:orientation="vertical"
           android:layout_width="match_parent"
           android:layout_height="match_parent">
@@ -23,14 +25,22 @@
              android:layout_width="match_parent"
              android:layout_height="?attr/actionBarSize"
              android:background="#2196F3"
-             app:menu="@menu/add_mon_an"
              android:id="@+id/toolbar">
-
-
-
          </androidx.appcompat.widget.Toolbar>
 
+         <TextView
+             android:background="@color/white"
+             android:gravity="center"
+             android:textSize="20dp"
+             android:textColor="#F30C0C"
+             android:textStyle="bold"
+             android:text="Loại món"
+             android:layout_width="match_parent"
+             android:layout_height="50dp"></TextView>
+
          <LinearLayout
+             android:background="@color/white"
+             android:layout_marginTop="20dp"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 

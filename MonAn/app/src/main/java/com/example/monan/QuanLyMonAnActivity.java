@@ -41,7 +41,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
     String urlDelete = "http://192.168.1.5/WebService/monan/delete.php";
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
-    MonAnAdapter adapterMonAn;
+    QuanLyMonAnAdapter adapterMonAn;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -67,7 +67,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
         });
 
         arrayMonAn = new ArrayList<>();
-        adapterMonAn = new MonAnAdapter(QuanLyMonAnActivity.this, R.layout.dong_mon_an, arrayMonAn);
+        adapterMonAn = new QuanLyMonAnAdapter(QuanLyMonAnActivity.this, R.layout.dong_mon_an, arrayMonAn);
         lvMonAn.setAdapter(adapterMonAn);
 
         GetData(urlGetData);
@@ -154,12 +154,12 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThucDon:
-                    Intent intentThucDon = new Intent(QuanLyMonAnActivity.this, QuanLyMonAnActivity.class);
+                    Intent intentThucDon = new Intent(QuanLyMonAnActivity.this, MonAnActivity.class);
                     startActivity(intentThucDon);
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnQuanLy:
-                    Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, AddMonAnActivity.class);
+                    Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intentQuanLy);
                     drawerLayout.closeDrawers();
                     return true;

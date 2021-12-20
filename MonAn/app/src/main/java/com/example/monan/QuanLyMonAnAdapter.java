@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,14 +18,14 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class MonAnAdapter extends BaseAdapter {
+public class QuanLyMonAnAdapter extends BaseAdapter {
 
 
-    private MonAnActivity context;
+    private QuanLyMonAnActivity context;
     private int layout;
     private List<MonAn> monAnList;
 
-    public MonAnAdapter(MonAnActivity context, int layout, List<MonAn> monAnList) {
+    public QuanLyMonAnAdapter(QuanLyMonAnActivity context, int layout, List<MonAn> monAnList) {
         this.context = context;
         this.layout = layout;
         this.monAnList = monAnList;
@@ -49,7 +48,6 @@ public class MonAnAdapter extends BaseAdapter {
 
     private class ViewHolder{
         TextView txtTenMonAn, txtGia;
-        Button btnChonMon;
         ImageView imgHinh, imgDelete, imgEdit;
     }
 
@@ -63,7 +61,6 @@ public class MonAnAdapter extends BaseAdapter {
             view = inflater.inflate(layout, null);
             holder.txtTenMonAn = (TextView) view.findViewById(R.id.textviewTenMonAnCustom);
             holder.txtGia = (TextView) view.findViewById(R.id.textviewGiaCustom);
-            holder.btnChonMon = (Button) view.findViewById(R.id.butttonChonMon);
             holder.imgHinh = (ImageView) view.findViewById(R.id.imageViewHinh);
             holder.imgEdit = (ImageView) view.findViewById(R.id.imageviewEdit);
             holder.imgDelete = (ImageView) view.findViewById(R.id.imageviewDelete);
@@ -81,13 +78,45 @@ public class MonAnAdapter extends BaseAdapter {
 
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
-        holder.txtGia.setText(  en.format(monAn.getGia()) +" đ");
+        holder.txtGia.setText("Giá:" + en.format(monAn.getGia()) +"đ");
         Picasso.get().load(monAn.getHinhAnh()).into(holder.imgHinh);
 
+        //bat su kien xóa và sửa
+        holder.imgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpdateMonAnActivity.class);
+                intent.putExtra("dataMonAn", monAn);
+                context.startActivity(intent);
+            }
+        });
+
+        holder.imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                XacNhanXoa(monAn.getTenMon(), monAn.getMaMon());
+            }
+        });
 
         return view;
     }
+    public void XacNhanXoa(String ten, int mamon){
+        AlertDialog.Builder dialogXoa = new AlertDialog.Builder(context);
+        dialogXoa.setMessage("Bạn có muốn xóa món ăn " + ten + " không!");
+        dialogXoa.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                context.DeleteMonAn(mamon);
+            }
+        });
+        dialogXoa.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
+            }
+        });
+        dialogXoa.show();
+    }
 
 }
 

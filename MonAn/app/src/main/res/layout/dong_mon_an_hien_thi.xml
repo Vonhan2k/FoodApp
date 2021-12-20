@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:background="#E3DADA"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:backgroundTint="@color/white"
+        android:background="@drawable/custom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageViewHinh"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/textviewTenMonAnCustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/imageViewHinh"
+            android:text="Tên món ăn: cơm"
+            android:textColor="#0d00ff"
+            android:textSize="24sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/textviewGiaCustom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textviewTenMonAnCustom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/imageViewHinh"
+            android:text="Giá: 20000"
+            android:textColor="#539308"
+            android:textSize="24sp"
+            android:textStyle="bold"></TextView>
+
+        <Button
+            android:id="@+id/butttonChonMon"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textviewGiaCustom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toRightOf="@id/imageViewHinh"
+            android:backgroundTint="#DC0D0D"
+            android:text="Chọn món"
+            android:textStyle="bold">
+
+        </Button>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

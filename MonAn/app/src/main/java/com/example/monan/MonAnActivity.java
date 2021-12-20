@@ -55,19 +55,19 @@ public class MonAnActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(R.drawable.ic_action_menu);
-        toolbar.setTitle("Thực đơn");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Thực đơn");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-                navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+                onBackPressed();
             }
         });
 
         arrayMonAn = new ArrayList<>();
-        adapterMonAn = new MonAnAdapter(MonAnActivity.this, R.layout.dong_mon_an, arrayMonAn);
+        adapterMonAn = new MonAnAdapter(MonAnActivity.this, R.layout.dong_mon_an_hien_thi, arrayMonAn);
         lvMonAn.setAdapter(adapterMonAn);
 
         GetData(urlGetData);
@@ -126,12 +126,12 @@ public class MonAnActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnQuanLy:
-                    Intent intentQuanLy = new Intent(MonAnActivity.this, AddMonAnActivity.class);
+                    Intent intentQuanLy = new Intent(MonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intentQuanLy);
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThoat:
-                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(MonAnActivity.this,R.style.Theme_Design_Light);
+                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(MonAnActivity.this);
                     dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
                     dialogThoat.setMessage("Bạn có chắc chắn?");
                     dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
@@ -154,20 +154,4 @@ public class MonAnActivity extends AppCompatActivity {
         }
     };
 
-
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menu_add_mon_an){
-            Intent intent = new Intent(MonAnActivity.this, AddMonAnActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.add_mon_an, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 }
