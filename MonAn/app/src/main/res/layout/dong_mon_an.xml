@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewHinh"
+        android:layout_width="100dp"
+        android:layout_height="100dp">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/textviewTenMonAnCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/imageViewHinh"
+        android:text="Tên món ăn: cơm"
+        android:textColor="#0d00ff"
+        android:textSize="24sp"
+        android:textStyle="bold"></TextView>
+
+    <TextView
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/imageViewHinh"
+        android:id="@+id/textviewGiaCustom"
+        android:textStyle="bold"
+        android:textColor="#539308"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/textviewTenMonAnCustom"
+        android:textSize="24sp"
+        android:text="Giá: 20000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></TextView>
+
+
+
+    <ImageView
+        android:id="@+id/imageviewEdit"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentRight="true"
+        android:src="@android:drawable/ic_menu_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ImageView>
+
+    <ImageView
+        android:layout_toLeftOf="@+id/imageviewEdit"
+        android:id="@+id/imageviewDelete"
+        android:layout_marginTop="15dp"
+
+        android:src="@android:drawable/ic_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></ImageView>
+
+</RelativeLayout>

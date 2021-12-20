@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".UpdateMonAnActivity">
+
+    <TextView
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textColor="#F40101"
+        android:textStyle="bold"
+        android:text="CẬP NHẬT MÓN ĂN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageviewAvatarCapNhat"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/food_default"
+            android:layout_width="150dp"
+            android:layout_height="150dp">
+        </ImageView>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:backgroundTint="#C3BEBE"
+                android:id="@+id/buttonChupHinh"
+                android:text="Chụp hình"
+                android:gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"></Button>
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:textColor="@color/black"
+                android:backgroundTint="#C3BEBE"
+                android:id="@+id/buttonChonHinh"
+                android:text="Chọn hình"
+                android:gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"></Button>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="Tên Món Ăn: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <EditText
+            android:layout_marginLeft="14dp"
+            android:id="@+id/editTextTenMonAn"
+            android:hint="Nhập Tên món ăn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="Giá Tiền: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <EditText
+            android:inputType="number"
+            android:layout_marginLeft="47dp"
+            android:id="@+id/editTextGiaTien"
+            android:hint="Nhập Giá tiền"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_gravity="center"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="Loại Món Ăn: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+
+        <Spinner
+            android:id="@+id/spLoaiMonAn"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonCapNhatMonAn"
+            android:textColor="@color/black"
+            android:backgroundTint="#D1CBCB"
+            android:layout_marginLeft="50dp"
+            android:padding="10dp"
+            android:text="Cập nhật"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content">
+        </Button>
+
+        <Button
+            android:id="@+id/buttonThoat"
+            android:textColor="@color/black"
+            android:backgroundTint="#D1CBCB"
+            android:layout_marginLeft="50dp"
+            android:padding="10dp"
+            android:text="Thoát"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content">
+        </Button>
+    </LinearLayout>
+</LinearLayout>
