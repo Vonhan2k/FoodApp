@@ -6,15 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <LinearLayout
+        android:id="@+id/linearLayouttoolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#2196F3"
+            app:title="Food Menu "
+            android:id="@+id/toolbar">
+
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
+    <LinearLayout
+
         android:id="@+id/linearLayoutBanner"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayouttoolbar">
+
 
         <ViewFlipper
             android:id="@+id/viewBanner"
@@ -47,7 +66,7 @@
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#CFCACA"
@@ -63,20 +82,22 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+
                 android:orientation="vertical"
                 android:layout_marginLeft="25dp"
-                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/custom_layout"
                 android:layout_marginTop="20dp"
                 android:layout_width="200dp"
                 android:layout_height="200dp">
 
                 <ImageView
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="20dp"
                     android:id="@+id/imageviewIconTrangChu"
-                    android:layout_marginLeft="24dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/bill_50"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp">
+                    android:layout_width="125dp"
+                    android:layout_height="125dp">
                 </ImageView>
 
                 <TextView
@@ -98,19 +119,20 @@
                 android:layout_height="200dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/white">
+                android:backgroundTint="@color/white"
+                android:background="@drawable/custom_layout">
 
                 <ImageView
                     android:id="@+id/imageviewIconMonAn"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="35dp"
                     android:src="@drawable/food"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp">
+                    android:layout_width="125dp"
+                    android:layout_height="125dp">
                 </ImageView>
 
                 <TextView
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -131,18 +153,19 @@
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_marginLeft="25dp"
-                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/custom_layout"
                 android:layout_marginTop="20dp"
                 android:layout_width="200dp"
                 android:layout_height="200dp">
 
                 <ImageView
                     android:id="@+id/imageviewIconNhanVien"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="35dp"
                     android:src="@drawable/person"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp">
+                    android:layout_width="125dp"
+                    android:layout_height="125dp">
                 </ImageView>
 
                 <TextView
@@ -164,15 +187,16 @@
                 android:layout_height="200dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/white">
+                android:backgroundTint="@color/white"
+                android:background="@drawable/custom_layout">
 
                 <ImageView
                     android:id="@+id/imageviewIconQuanLy"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginLeft="35dp"
                     android:src="@drawable/serve_64"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp">
+                    android:layout_width="125dp"
+                    android:layout_height="125dp">
                 </ImageView>
 
                 <TextView

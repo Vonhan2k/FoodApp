@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MonAnActivity extends AppCompatActivity {
+public class QuanLyMonAnActivity extends AppCompatActivity {
 
     String urlGetData = "http://192.168.1.5/food/json/monan/getdata.php";
     String urlDelete = "http://192.168.1.5/WebService/monan/delete.php";
@@ -49,7 +49,7 @@ public class MonAnActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mon_an);
+        setContentView(R.layout.activity_quan_ly_mon_an);
 
         lvMonAn = (ListView) findViewById(R.id.listviewMonAn);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -67,10 +67,12 @@ public class MonAnActivity extends AppCompatActivity {
         });
 
         arrayMonAn = new ArrayList<>();
-        adapterMonAn = new MonAnAdapter(MonAnActivity.this, R.layout.dong_mon_an, arrayMonAn);
+        adapterMonAn = new MonAnAdapter(QuanLyMonAnActivity.this, R.layout.dong_mon_an, arrayMonAn);
         lvMonAn.setAdapter(adapterMonAn);
 
         GetData(urlGetData);
+
+
 
 
     }
@@ -100,7 +102,7 @@ public class MonAnActivity extends AppCompatActivity {
             new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MonAnActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuanLyMonAnActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         );
@@ -109,6 +111,37 @@ public class MonAnActivity extends AppCompatActivity {
 
 
 
+    public void DeleteMonAn(final int maMon){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDelete, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.trim().equals("success")){
+                    Toast.makeText(QuanLyMonAnActivity.this, "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                    GetData(urlGetData);
+                } else{
+                    Toast.makeText(QuanLyMonAnActivity.this, "Lỗi!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(QuanLyMonAnActivity.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("mamon", String.valueOf(maMon));
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
     private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -116,22 +149,22 @@ public class MonAnActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.btnTrangChu:
-                    Intent intentTrangChu = new Intent(MonAnActivity.this, MainActivity.class);
+                    Intent intentTrangChu = new Intent(QuanLyMonAnActivity.this, MainActivity.class);
                     startActivity(intentTrangChu);
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThucDon:
-                    Intent intentThucDon = new Intent(MonAnActivity.this, MonAnActivity.class);
+                    Intent intentThucDon = new Intent(QuanLyMonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intentThucDon);
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnQuanLy:
-                    Intent intentQuanLy = new Intent(MonAnActivity.this, AddMonAnActivity.class);
+                    Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, AddMonAnActivity.class);
                     startActivity(intentQuanLy);
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThoat:
-                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(MonAnActivity.this,R.style.Theme_Design_Light);
+                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(QuanLyMonAnActivity.this,R.style.Theme_Design_Light);
                     dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
                     dialogThoat.setMessage("Bạn có chắc chắn?");
                     dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
@@ -159,7 +192,7 @@ public class MonAnActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_add_mon_an){
-            Intent intent = new Intent(MonAnActivity.this, AddMonAnActivity.class);
+            Intent intent = new Intent(QuanLyMonAnActivity.this, AddMonAnActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

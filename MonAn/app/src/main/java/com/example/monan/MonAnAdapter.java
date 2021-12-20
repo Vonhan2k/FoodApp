@@ -1,5 +1,6 @@
 package com.example.monan;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,11 +20,12 @@ import java.util.Locale;
 
 public class MonAnAdapter extends BaseAdapter {
 
-    private MonAnActivity context;
+    private Activity context;
+    private QuanLyMonAnActivity context1;
     private int layout;
     private List<MonAn> monAnList;
 
-    public MonAnAdapter(MonAnActivity context, int layout, List<MonAn> monAnList) {
+    public MonAnAdapter(Activity context, int layout, List<MonAn> monAnList) {
         this.context = context;
         this.layout = layout;
         this.monAnList = monAnList;
@@ -98,14 +100,13 @@ public class MonAnAdapter extends BaseAdapter {
 
         return view;
     }
-
-    private void XacNhanXoa(String ten, int mamon){
-        AlertDialog.Builder dialogXoa = new AlertDialog.Builder(context);
+    public void XacNhanXoa(String ten, int mamon){
+        AlertDialog.Builder dialogXoa = new AlertDialog.Builder(context1);
         dialogXoa.setMessage("Bạn có muốn xóa món ăn " + ten + " không!");
         dialogXoa.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                context.DeleteMonAn(mamon);
+                context1.DeleteMonAn(mamon);
             }
         });
         dialogXoa.setNegativeButton("Không", new DialogInterface.OnClickListener() {
@@ -116,5 +117,6 @@ public class MonAnAdapter extends BaseAdapter {
         });
         dialogXoa.show();
     }
+
 }
 

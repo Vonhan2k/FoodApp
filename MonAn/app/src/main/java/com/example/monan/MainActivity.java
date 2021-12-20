@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         imgIconQuanLy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               /* Intent intentQuanLy = new Intent(MainActivity.this, QuanLyActivity.class);
-                startActivity(intentQuanLy);*/
+                Intent intentQuanLy = new Intent(MainActivity.this, QuanLyMonAnActivity.class);
+                startActivity(intentQuanLy);
                 overridePendingTransition(0,0);
             }
         });
