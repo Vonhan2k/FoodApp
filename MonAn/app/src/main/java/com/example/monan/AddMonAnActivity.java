@@ -64,7 +64,7 @@ public class AddMonAnActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 if (response.trim().equals("success")){
                     Toast.makeText(AddMonAnActivity.this, "Thêm món ăn thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddMonAnActivity.this, MainActivity.class);
+                    Intent intent = new Intent(AddMonAnActivity.this, MonAnActivity.class);
                     startActivity(intent);
                 } else{
                     Toast.makeText(AddMonAnActivity.this, "Lỗi! Không thể thêm món ăn", Toast.LENGTH_SHORT).show();

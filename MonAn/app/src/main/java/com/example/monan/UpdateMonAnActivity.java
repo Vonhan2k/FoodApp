@@ -72,7 +72,7 @@ public class UpdateMonAnActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 if (response.trim().equals("success")){
                     Toast.makeText(UpdateMonAnActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(UpdateMonAnActivity.this, MainActivity.class);
+                    Intent intent = new Intent(UpdateMonAnActivity.this, MonAnActivity.class);
                     startActivity(intent);
                 } else{
                     Toast.makeText(UpdateMonAnActivity.this, "Lỗi!", Toast.LENGTH_SHORT).show();
