@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class MonAnAdapter extends BaseAdapter {
 
@@ -70,7 +72,13 @@ public class MonAnAdapter extends BaseAdapter {
         MonAn monAn = monAnList.get(i);
 
         holder.txtTenMonAn.setText(monAn.getTenMon());
-        holder.txtGia.setText("Năm sinh:" + monAn.getGia());
+        // tạo 1 NumberFormat để định dạng số theo tiêu chuẩn của nước Anh
+        Locale localeEN = new Locale("en", "EN");
+        NumberFormat en = NumberFormat.getInstance(localeEN);
+
+        // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
+        // thì phần ngàn của số được phân cách bằng dấu phẩy
+        holder.txtGia.setText("Giá:" + en.format(monAn.getGia()) +"đ");
         Picasso.get().load(monAn.getHinhAnh()).into(holder.imgHinh);
 
         //bat su kien xóa và sửa

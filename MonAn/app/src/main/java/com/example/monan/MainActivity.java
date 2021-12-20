@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    String urlGetData = "http://192.168.1.5/WebService/monan/getdata.php";
+    String urlGetData = "http://192.168.1.5/food/json/monan/getdata.php";
     String urlDelete = "http://192.168.1.5/WebService/monan/delete.php";
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;

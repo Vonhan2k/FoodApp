@@ -15,6 +15,7 @@
         android:id="@+id/textviewTenMonAnCustom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/imageViewHinh"
         android:text="Tên món ăn: cơm"
@@ -23,17 +24,18 @@
         android:textStyle="bold"></TextView>
 
     <TextView
+        android:id="@+id/textviewGiaCustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewTenMonAnCustom"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/imageViewHinh"
-        android:id="@+id/textviewGiaCustom"
-        android:textStyle="bold"
-        android:textColor="#539308"
-        android:layout_marginTop="10dp"
-        android:layout_below="@id/textviewTenMonAnCustom"
-        android:textSize="24sp"
         android:text="Giá: 20000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></TextView>
+        android:textColor="#539308"
+        android:textSize="24sp"
+        android:textStyle="bold"></TextView>
 
 
 
