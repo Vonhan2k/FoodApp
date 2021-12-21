@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,7 +43,7 @@ public class LoaiMonAnAdapter extends BaseAdapter {
 
     private class ViewHolder{
         ImageView imgLoaiMonAn;
-        EditText editText_TenLoaiMonAn;
+        TextView editText_TenLoaiMonAn;
     }
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
@@ -52,7 +53,7 @@ public class LoaiMonAnAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout,null);
             holder.imgLoaiMonAn = (ImageView) view.findViewById(R.id.imageView_loaimonan);
-            holder.editText_TenLoaiMonAn = (EditText) view.findViewById(R.id.editText_tenloaimonan);
+            holder.editText_TenLoaiMonAn = (TextView) view.findViewById(R.id.editText_tenloaimonan);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
