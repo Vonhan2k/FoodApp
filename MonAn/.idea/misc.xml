@@ -3,6 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/layout/activity_loai_mon_an.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/layout/activity_mon_an.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/layout/activity_quan_ly_mon_an.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/layout/dong_loai_mon_an.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/layout/dong_mon_an.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/layout/dong_mon_an_hien_thi.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/menu/add_loai_mon_an.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/DoAn_AppAndroid/FoodApp/MonAn/app/src/main/res/menu/add_mon_an.xml" value="0.20416666666666666" />
         <entry key="..\:/GitHub/FoodApp/MonAn/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/GitHub/FoodApp/MonAn/app/src/main/res/drawable/custom_button.xml" value="0.19583333333333333" />
         <entry key="..\:/GitHub/FoodApp/MonAn/app/src/main/res/layout/activity_main.xml" value="0.5" />

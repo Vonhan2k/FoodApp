@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         imgIconMonAn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentMonAn = new Intent(MainActivity.this, MonAnActivity.class);
+                Intent intentMonAn = new Intent(MainActivity.this, LoaiMonAnActivity.class);
                 startActivity(intentMonAn);
                 overridePendingTransition(0,0);
             }
