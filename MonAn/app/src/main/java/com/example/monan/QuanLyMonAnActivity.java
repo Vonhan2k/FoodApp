@@ -1,10 +1,12 @@
 package com.example.monan;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -46,6 +48,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,20 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+
+       toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+           @Override
+           public boolean onMenuItemClick(MenuItem item) {
+               switch (item.getItemId()){
+                   case R.id.menu_add_mon_an:
+                       Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, AddMonAnActivity.class);
+                       startActivity(intentQuanLy);
+               }
+               return false;
+           }
+       });
 
         toolbar.setNavigationIcon(R.drawable.ic_action_menu);
         toolbar.setTitle("Thực đơn");
@@ -75,6 +92,12 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.add_mon_an, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void GetData(String url){
@@ -189,18 +212,6 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menu_add_mon_an){
-            Intent intent = new Intent(QuanLyMonAnActivity.this, AddMonAnActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.add_mon_an, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+
 }
