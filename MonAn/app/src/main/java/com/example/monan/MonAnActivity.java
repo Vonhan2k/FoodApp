@@ -37,8 +37,8 @@ import java.util.Map;
 
 public class MonAnActivity extends AppCompatActivity {
 
-    String urlGetData = "http://192.168.1.5/food/json/monan/getdata.php";
-    String urlDelete = "http://192.168.1.5/WebService/monan/delete.php";
+    String urlGetData =  "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
+    String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
     MonAnAdapter adapterMonAn;

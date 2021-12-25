@@ -24,7 +24,8 @@ public class LoaiMonAnActivity extends AppCompatActivity {
     GridView gvDanhSachLoaiMonAn;
     ArrayList<LoaiMonAn> loaiMonAnArrayList;
     LoaiMonAnAdapter loaiMonAnAdapter;
-    String url = "http://192.168.1.3/getdata_loaimon.php";
+    //String url = "http://192.168.1.4/getdata_loaimon.php";
+    String url = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

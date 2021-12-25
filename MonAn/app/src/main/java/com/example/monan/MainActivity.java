@@ -23,8 +23,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static int REQUEST_CODE_CAMERA = 456;
-    public static int REQUEST_CODE_FOLDER = 789;
+
 
     ViewFlipper viewBanner;
     Animation enter, exit;

@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,14 +40,18 @@ import java.util.Map;
 
 public class QuanLyMonAnActivity extends AppCompatActivity {
 
-    String urlGetData = "http://192.168.1.5/food/json/monan/getdata.php";
-    String urlDelete = "http://192.168.1.5/WebService/monan/delete.php";
+
+
+    String urlGetData = " http://food-menu-vhnhan.herokuapp.com//json/monan/getdata.php";
+    String urlDelete = " http://food-menu-vhnhan.herokuapp.com//json/monan/delete.php";
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
     QuanLyMonAnAdapter adapterMonAn;
     Toolbar toolbar;
+    ProgressBar pgLoad;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+
 
     @SuppressLint("ResourceType")
     @Override
@@ -55,9 +60,11 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quan_ly_mon_an);
 
         lvMonAn = (ListView) findViewById(R.id.listviewMonAn);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
 
 
 
@@ -88,8 +95,6 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
         lvMonAn.setAdapter(adapterMonAn);
 
         GetData(urlGetData);
-
-
 
 
     }

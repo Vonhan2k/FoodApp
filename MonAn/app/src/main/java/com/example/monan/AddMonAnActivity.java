@@ -1,11 +1,17 @@
 package com.example.monan;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
@@ -27,24 +33,32 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AddMonAnActivity extends AppCompatActivity {
 
+    public static int REQUEST_CODE_CAMERA = 456;
+    public static int REQUEST_CODE_FOLDER = 789;
+
     EditText edtTenMonAn, edtGia;
-    Button btnThem, btnThoat;
+    ImageView imageHinh;
+    Button btnThem, btnThoat, btnChonHinh, btnChupHinh;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     Spinner spLoaiMon;
+    LoaiMon loaiMon;
+    int vitri = 1;
 
     ArrayList<LoaiMon> arrayLoaiMon;
     ArrayList<String> names = new ArrayList<String>();
 
 
-    String urlGetData = "http://192.168.1.5/food/json/loaimon/getdata.php";
-    String urlInsert = "http://192.168.1.5/food/json/monan/insert.php";
+    String urlGetData = "http//food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
+    String urlInsert = "http://food-menu-vhnhan.herokuapp.com/json/monan/insert.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +79,17 @@ public class AddMonAnActivity extends AppCompatActivity {
             }
         });
 
+        spLoaiMon.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                vitri = i+1;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +109,25 @@ public class AddMonAnActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        //Chup hình
+        btnChupHinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,AddMonAnActivity.REQUEST_CODE_CAMERA);
+            }
+        });
+
+        //Chọn Hình
+        btnChonHinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, AddMonAnActivity.REQUEST_CODE_FOLDER);
             }
         });
 
@@ -154,13 +198,36 @@ public class AddMonAnActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("tenmon", edtTenMonAn.getText().toString().trim());
                 params.put("gia", edtGia.getText().toString().trim());
+                params.put("hinhanh", imageHinh.toString().trim());
+                params.put("maloai", vitri+"");
                 return params;
             }
         };
         requestQueue.add(stringRequest);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == AddMonAnActivity.REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null){
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            imageHinh.setImageBitmap(bitmap);
+        }
+        if (requestCode == AddMonAnActivity.REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null){
+            Uri uri = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                imageHinh.setImageBitmap(bitmap);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     private void AnhXa(){
+        imageHinh = (ImageView) findViewById(R.id.imageviewAvatarThem);
         spLoaiMon = (Spinner) findViewById(R.id.spLoaiMonAn);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         toolbar = (Toolbar) findViewById(R.id.toolbarThemMon);
@@ -168,5 +235,8 @@ public class AddMonAnActivity extends AppCompatActivity {
         edtGia = (EditText) findViewById(R.id.editTextGiaTien);
         btnThem = (Button) findViewById(R.id.buttonThem);
         btnThoat = (Button) findViewById(R.id.buttonThoat);
+        btnChupHinh = (Button) findViewById(R.id.buttonChupHinh);
+        btnChonHinh = (Button) findViewById(R.id.buttonChonHinh);
+
     }
 }
