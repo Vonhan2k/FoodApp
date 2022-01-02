@@ -70,7 +70,6 @@ public class UpdateMonAnActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 vitri = i+1;
-
             }
 
             @Override
@@ -149,7 +148,7 @@ public class UpdateMonAnActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 if (response.trim().equals("success")){
                     Toast.makeText(UpdateMonAnActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(UpdateMonAnActivity.this, MonAnActivity.class);
+                    Intent intent = new Intent(UpdateMonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intent);
                 } else{
                     Toast.makeText(UpdateMonAnActivity.this, "Lỗi!", Toast.LENGTH_SHORT).show();
@@ -166,7 +165,7 @@ public class UpdateMonAnActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-               // params.put("mamon", String.valueOf(mamon));
+                params.put("mamon", String.valueOf(mamon));
                 params.put("tenmon", edtTenMonAnCapNhat.getText().toString().trim());
                 params.put("gia", edtGiaCapNhat.getText().toString().trim());
                 params.put("hinhanh", imageHinh.toString().trim());

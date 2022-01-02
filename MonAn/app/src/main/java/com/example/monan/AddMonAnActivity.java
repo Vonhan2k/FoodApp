@@ -57,7 +57,7 @@ public class AddMonAnActivity extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<String>();
 
 
-    String urlGetData = "http//food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
+    String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
     String urlInsert = "http://food-menu-vhnhan.herokuapp.com/json/monan/insert.php";
 
     @Override

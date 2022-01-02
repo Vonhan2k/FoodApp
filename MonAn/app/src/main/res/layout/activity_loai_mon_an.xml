@@ -7,23 +7,56 @@
     android:orientation="vertical"
     tools:context=".LoaiMonAnActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Loại Món Ăn"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="#F30C0C"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="55dp"
-        android:layout_marginBottom="20dp"/>
 
-    <GridView
-        android:id="@+id/gridViewLoaiMonAn"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:fitsSystemWindows="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="2"
-        android:layout_marginBottom="20dp"/>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#2196F3"
+
+                app:title="Thực đơn"
+                android:id="@+id/toolbar">
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <GridView
+                    android:id="@+id/gridViewLoaiMonAn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:numColumns="2"
+                    android:layout_marginBottom="20dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            app:menu="@menu/bottom_navigation_menu"
+            app:headerLayout="@layout/header_navigation_menu"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
 </LinearLayout>

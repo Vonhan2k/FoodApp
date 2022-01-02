@@ -7,13 +7,29 @@ public class MonAn implements Serializable {
     private String tenMon;
     private int Gia;
     private String hinhAnh;
-
+    private int maLoai;
 
     public MonAn(int maMon, String tenMon, int gia, String hinhAnh) {
         this.maMon = maMon;
         this.tenMon = tenMon;
         Gia = gia;
         this.hinhAnh = hinhAnh;
+    }
+
+    public MonAn(int maMon, String tenMon, int gia, String hinhAnh, int maLoai) {
+        this.maMon = maMon;
+        this.tenMon = tenMon;
+        Gia = gia;
+        this.hinhAnh = hinhAnh;
+        this.maLoai = maLoai;
+    }
+
+    public int getMaLoai() {
+        return maLoai;
+    }
+
+    public void setMaLoai(int maLoai) {
+        this.maLoai = maLoai;
     }
 
     public String getHinhAnh() {

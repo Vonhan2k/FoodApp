@@ -42,13 +42,13 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
 
 
 
-    String urlGetData = " http://food-menu-vhnhan.herokuapp.com//json/monan/getdata.php";
-    String urlDelete = " http://food-menu-vhnhan.herokuapp.com//json/monan/delete.php";
+    String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
+    String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
     QuanLyMonAnAdapter adapterMonAn;
     Toolbar toolbar;
-    ProgressBar pgLoad;
+
     DrawerLayout drawerLayout;
     NavigationView navigationView;
 
@@ -111,6 +111,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONArray response) {
                 arrayMonAn.clear();
+
                 for (int i = 0; i < response.length(); i++){
                     try {
                         JSONObject object = response.getJSONObject(i);
@@ -118,7 +119,8 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                                 object.getInt("mamon"),
                                 object.getString("tenmon"),
                                 object.getInt("gia"),
-                                object.getString("hinhanh")
+                                object.getString("hinhanh"),
+                                object.getInt("maloai")
                         ));
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -139,7 +141,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
 
 
 
-    public void DeleteMonAn(final int maMon){
+    public void DeleteMonAn(final int mamon){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDelete, new Response.Listener<String>() {
             @Override
@@ -163,7 +165,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("mamon", String.valueOf(maMon));
+                params.put("mamon", String.valueOf(mamon));
                 return params;
             }
         };

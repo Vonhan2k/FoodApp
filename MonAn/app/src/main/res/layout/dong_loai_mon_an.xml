@@ -10,12 +10,11 @@
        android:orientation="vertical"
        android:layout_width="200dp"
        android:layout_height="200dp"
-       android:layout_marginLeft="25dp"
-       android:layout_marginTop="20dp"
        android:background="@drawable/custom_layout"
        android:backgroundTint="#A6A4A4">
 
        <ImageView
+           android:layout_marginTop="10dp"
            android:id="@+id/imageView_loaimonan"
            android:layout_width="125dp"
            android:layout_height="125dp"
@@ -23,6 +22,7 @@
            android:layout_gravity="center"/>
 
        <TextView
+           android:gravity="center"
            android:id="@+id/editText_tenloaimonan"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"

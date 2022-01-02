@@ -47,7 +47,7 @@ public class QuanLyMonAnAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView txtTenMonAn, txtGia;
+        TextView txtTenMonAn, txtGia, txtmaLoai;
         ImageView imgHinh, imgDelete, imgEdit;
     }
 
@@ -61,6 +61,7 @@ public class QuanLyMonAnAdapter extends BaseAdapter {
             view = inflater.inflate(layout, null);
             holder.txtTenMonAn = (TextView) view.findViewById(R.id.textviewTenMonAnCustom);
             holder.txtGia = (TextView) view.findViewById(R.id.textviewGiaCustom);
+            holder.txtmaLoai = (TextView) view.findViewById(R.id.textviewMaLoaiCustom);
             holder.imgHinh = (ImageView) view.findViewById(R.id.imageViewHinh);
             holder.imgEdit = (ImageView) view.findViewById(R.id.imageviewEdit);
             holder.imgDelete = (ImageView) view.findViewById(R.id.imageviewDelete);
@@ -79,6 +80,7 @@ public class QuanLyMonAnAdapter extends BaseAdapter {
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
         holder.txtGia.setText("Giá:" + en.format(monAn.getGia()) +"đ");
+        holder.txtmaLoai.setText(monAn.getMaLoai()+"");
         Picasso.get().load(monAn.getHinhAnh()).into(holder.imgHinh);
 
         //bat su kien xóa và sửa
@@ -107,6 +109,7 @@ public class QuanLyMonAnAdapter extends BaseAdapter {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 context.DeleteMonAn(mamon);
+
             }
         });
         dialogXoa.setNegativeButton("Không", new DialogInterface.OnClickListener() {

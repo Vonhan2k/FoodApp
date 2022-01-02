@@ -1,8 +1,18 @@
 package com.example.monan;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -13,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,6 +35,10 @@ public class LoaiMonAnActivity extends AppCompatActivity {
     GridView gvDanhSachLoaiMonAn;
     ArrayList<LoaiMonAn> loaiMonAnArrayList;
     LoaiMonAnAdapter loaiMonAnAdapter;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+
     //String url = "http://192.168.1.4/getdata_loaimon.php";
     String url = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
     @Override
@@ -33,12 +48,34 @@ public class LoaiMonAnActivity extends AppCompatActivity {
 
         // custom listview
         gvDanhSachLoaiMonAn  = (GridView) findViewById(R.id.gridViewLoaiMonAn);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_action_menu);
+        toolbar.setTitle("Thực đơn");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+                navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            }
+        });
+
         loaiMonAnArrayList = new ArrayList<>();
         loaiMonAnAdapter = new LoaiMonAnAdapter(LoaiMonAnActivity.this,R.layout.dong_loai_mon_an,loaiMonAnArrayList);
         gvDanhSachLoaiMonAn.setAdapter(loaiMonAnAdapter);
         // kết thức custom listview
 
         GetDataLoaiMon(url);
+
+        gvDanhSachLoaiMonAn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(LoaiMonAnActivity.this, MonAnActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void GetDataLoaiMon(String url){
@@ -72,6 +109,50 @@ public class LoaiMonAnActivity extends AppCompatActivity {
                 }
                 );
                 requestQueue.add(jsonArrayRequest);
+        }
 
-    }
+    private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new NavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.btnTrangChu:
+                    Intent intentTrangChu = new Intent(LoaiMonAnActivity.this, MainActivity.class);
+                    startActivity(intentTrangChu);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnThucDon:
+                    Intent intentThucDon = new Intent(LoaiMonAnActivity.this, MonAnActivity.class);
+                    startActivity(intentThucDon);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnQuanLy:
+                    Intent intentQuanLy = new Intent(LoaiMonAnActivity.this, QuanLyMonAnActivity.class);
+                    startActivity(intentQuanLy);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnThoat:
+                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(LoaiMonAnActivity.this,R.style.Theme_Design_Light);
+                    dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
+                    dialogThoat.setMessage("Bạn có chắc chắn?");
+                    dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            onBackPressed();
+                        }
+                    });
+                    dialogThoat.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialogThoat.show();
+                    drawerLayout.closeDrawers();
+                    return true;
+            }
+            return false;
+        }
+    };
 }
