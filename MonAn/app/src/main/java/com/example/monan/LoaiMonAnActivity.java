@@ -42,8 +42,9 @@ public class LoaiMonAnActivity extends AppCompatActivity {
     Toolbar toolbar;
     private List<LoaiMon> loaiMonList;
 
+
     //String url = "http://192.168.1.4/getdata_loaimon.php";
-    String url = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
+    String url = "http://192.168.1.12/food-menu-vhnhan/json/loaimon/getdata.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

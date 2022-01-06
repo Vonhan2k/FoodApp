@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChonMonActivity">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageviewHinh"
+            android:layout_gravity="center"
+            android:src="@drawable/food_default"
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+        </ImageView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textviewTenMonAn"
+            android:layout_marginLeft="5dp"
+            android:textSize="35dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Cơm chiên"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"></TextView>
+
+        <TextView
+            android:id="@+id/textviewGia"
+            android:textSize="35dp"
+            android:textColor="#BD0F0F"
+            android:textStyle="bold"
+            android:text="100,000 đ"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonGiamSoLuong"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:backgroundTint="#CD8383"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:text="-"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></Button>
+
+        <TextView
+            android:id="@+id/textviewSoLuong"
+            android:gravity="center"
+            android:backgroundTint="@color/purple_200"
+            android:background="@drawable/custom_button"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="35dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="1"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"></TextView>
+
+        <Button
+            android:id="@+id/buttonTangSoLuong"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:backgroundTint="#C61111"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:text="+"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:text="Tổng Cộng :"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </TextView>
+
+        <TextView
+            android:id="@+id/textviewTongTien"
+            android:textStyle="bold"
+            android:textSize="35sp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#AE0A0A"
+            android:text="150,000 đ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/buttonChonMonAn"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:backgroundTint="#AE0A0A"
+            android:text="Chọn món"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></Button>
+
+    </LinearLayout>
+
+</LinearLayout>

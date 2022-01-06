@@ -86,6 +86,14 @@ public class MonAnAdapter extends BaseAdapter {
         Picasso.get().load(monAn.getHinhAnh()).into(holder.imgHinh);
 
 
+        holder.btnChonMon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ChonMonActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
         return view;
     }
 
