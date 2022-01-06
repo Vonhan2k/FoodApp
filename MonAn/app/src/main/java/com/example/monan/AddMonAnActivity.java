@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,6 +34,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -53,13 +55,20 @@ public class AddMonAnActivity extends AppCompatActivity {
     LoaiMon loaiMon;
     int vitri = 1;
 
+    String encodeImageString;
+
     ArrayList<LoaiMon> arrayLoaiMon;
     ArrayList<String> names = new ArrayList<String>();
 
 
-    String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
-    String urlInsert = "http://food-menu-vhnhan.herokuapp.com/json/monan/insert.php";
 
+
+    String urlGetData = " http://192.168.1.12/food-menu-vhnhan/json/loaimon/getdata.php";
+    String urlInsert = " http://192.168.1.12/food-menu-vhnhan/json/monan/insert.php";
+
+   /* String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
+    String urlInsert = "http://food-menu-vhnhan.herokuapp.com/json/monan/insert.php";
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,38 +182,40 @@ public class AddMonAnActivity extends AppCompatActivity {
     }
 
     private void ThemMonAn(String url){
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if (response.trim().equals("success")){
-                    Toast.makeText(AddMonAnActivity.this, "Thêm món ăn thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddMonAnActivity.this, MonAnActivity.class);
+                    Toast.makeText(AddMonAnActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddMonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intent);
                 } else{
-                    Toast.makeText(AddMonAnActivity.this, "Lỗi! Không thể thêm món ăn", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddMonAnActivity.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();
                 }
             }
         },
         new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(AddMonAnActivity.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
             }
         }){
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<String, String>();
                 params.put("tenmon", edtTenMonAn.getText().toString().trim());
                 params.put("gia", edtGia.getText().toString().trim());
-                params.put("hinhanh", imageHinh.toString().trim());
+                params.put("hinhanh",encodeImageString);
                 params.put("maloai", vitri+"");
                 return params;
             }
         };
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -218,12 +229,23 @@ public class AddMonAnActivity extends AppCompatActivity {
                 InputStream inputStream = getContentResolver().openInputStream(uri);
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 imageHinh.setImageBitmap(bitmap);
+                encodeBitmapImage(bitmap);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+
+    private void encodeBitmapImage(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        byte[] bytesofimage = byteArrayOutputStream.toByteArray();
+        encodeImageString = android.util.Base64.encodeToString(bytesofimage, Base64.DEFAULT);
     }
 
     private void AnhXa(){

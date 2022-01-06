@@ -1,6 +1,8 @@
 package com.example.monan;
 
-public class LoaiMonAn {
+import java.io.Serializable;
+
+public class LoaiMonAn implements Serializable {
     private int maloai;
     private String tenloai;
     private String hinhanh;

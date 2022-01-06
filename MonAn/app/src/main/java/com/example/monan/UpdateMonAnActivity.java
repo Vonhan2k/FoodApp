@@ -1,8 +1,13 @@
 package com.example.monan;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,6 +34,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +44,7 @@ import java.util.Map;
 public class UpdateMonAnActivity extends AppCompatActivity {
 
     EditText edtTenMonAnCapNhat, edtGiaCapNhat;
-    Button btnCapNhat, btnHuy;
+    Button btnCapNhat, btnHuy, btnChupHinh, btnChonHinh;
     ImageView imageHinh;
     Spinner spLoaiMon;
     int mamon = 0;
@@ -44,8 +52,13 @@ public class UpdateMonAnActivity extends AppCompatActivity {
     ArrayList<LoaiMon> arrayLoaiMon;
     ArrayList<String> names = new ArrayList<String>();
 
-    String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
-    String urlUpdate = "http://food-menu-vhnhan.herokuapp.com/json/monan/update.php";
+    String encodeImageString;
+    Bitmap bitmap;
+    String urlGetData = " http://192.168.1.12/food-menu-vhnhan/json/loaimon/getdata.php";
+    String urlUpdate = " http://192.168.1.12/food-menu-vhnhan/json/monan/update.php";
+
+   /* String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
+    String urlUpdate = "http://food-menu-vhnhan.herokuapp.com/json/monan/update.php";*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +78,25 @@ public class UpdateMonAnActivity extends AppCompatActivity {
         edtGiaCapNhat.setText(monAn.getGia()+"");
         Picasso.get().load(monAn.getHinhAnh()).into(imageHinh);
 
+
+        //Chup hình
+        btnChupHinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,AddMonAnActivity.REQUEST_CODE_CAMERA);
+            }
+        });
+
+        //Chọn Hình
+        btnChonHinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, AddMonAnActivity.REQUEST_CODE_FOLDER);
+            }
+        });
 
         spLoaiMon.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -168,12 +200,43 @@ public class UpdateMonAnActivity extends AppCompatActivity {
                 params.put("mamon", String.valueOf(mamon));
                 params.put("tenmon", edtTenMonAnCapNhat.getText().toString().trim());
                 params.put("gia", edtGiaCapNhat.getText().toString().trim());
-                params.put("hinhanh", imageHinh.toString().trim());
+                params.put("hinhanh",encodeImageString);
                 params.put("maloai_id", vitri+"");
                 return params;
             }
         };
         requestQueue.add(stringRequest);
+    }
+
+    private void encodeBitmapImage(Bitmap bitmap)
+    {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        byte[] bytesofimage = byteArrayOutputStream.toByteArray();
+        encodeImageString = android.util.Base64.encodeToString(bytesofimage, Base64.DEFAULT);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == AddMonAnActivity.REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null){
+            Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+            imageHinh.setImageBitmap(bitmap);
+            encodeBitmapImage(bitmap);
+            Toast.makeText(UpdateMonAnActivity.this, encodeImageString+"", Toast.LENGTH_SHORT).show();
+        }
+        if (requestCode == AddMonAnActivity.REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null){
+            Uri uri = data.getData();
+            try {
+                InputStream inputStream = getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                imageHinh.setImageBitmap(bitmap);
+                encodeBitmapImage(bitmap);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void AnhXa(){
@@ -182,7 +245,10 @@ public class UpdateMonAnActivity extends AppCompatActivity {
         edtGiaCapNhat = (EditText) findViewById(R.id.editTextGiaTien);
         btnCapNhat = (Button) findViewById(R.id.buttonCapNhatMonAn);
         btnHuy = (Button) findViewById(R.id.buttonThoat);
+        btnChupHinh = (Button) findViewById(R.id.buttonChupHinh);
+        btnChonHinh = (Button) findViewById(R.id.buttonChonHinh);
         spLoaiMon = (Spinner) findViewById(R.id.spLoaiMonAn);
+
     }
 
 }

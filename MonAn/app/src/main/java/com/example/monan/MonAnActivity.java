@@ -44,11 +44,14 @@ public class MonAnActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    int maloai = 0;
+    ArrayList<String> names = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mon_an);
+
 
         lvMonAn = (ListView) findViewById(R.id.listviewMonAn);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -152,5 +155,6 @@ public class MonAnActivity extends AppCompatActivity {
             return false;
         }
     };
+
 
 }

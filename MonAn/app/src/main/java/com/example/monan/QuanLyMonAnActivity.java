@@ -6,11 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -40,10 +38,10 @@ import java.util.Map;
 
 public class QuanLyMonAnActivity extends AppCompatActivity {
 
-
-
-    String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
-    String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";
+     String urlGetData = " http://192.168.1.12/food-menu-vhnhan/json/monan/getdata.php";
+     String urlDelete = "http://192.168.1.12/food-menu-vhnhan/json/monan/delete.php";
+  /*  String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
+    String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";*/
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
     QuanLyMonAnAdapter adapterMonAn;
@@ -119,8 +117,8 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                                 object.getInt("mamon"),
                                 object.getString("tenmon"),
                                 object.getInt("gia"),
-                                object.getString("hinhanh"),
-                                object.getInt("maloai")
+                                object.getString("hinhanh")
+
                         ));
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -140,8 +138,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
     }
 
 
-
-    public void DeleteMonAn(final int mamon){
+    public void DeleteMonAn(final int maMon){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDelete, new Response.Listener<String>() {
             @Override
@@ -165,7 +162,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("mamon", String.valueOf(mamon));
+                params.put("mamon", String.valueOf(maMon));
                 return params;
             }
         };

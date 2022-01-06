@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoaiMonAnActivity extends AppCompatActivity {
     GridView gvDanhSachLoaiMonAn;
@@ -38,6 +40,7 @@ public class LoaiMonAnActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    private List<LoaiMon> loaiMonList;
 
     //String url = "http://192.168.1.4/getdata_loaimon.php";
     String url = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
@@ -69,13 +72,7 @@ public class LoaiMonAnActivity extends AppCompatActivity {
 
         GetDataLoaiMon(url);
 
-        gvDanhSachLoaiMonAn.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(LoaiMonAnActivity.this, MonAnActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void GetDataLoaiMon(String url){
