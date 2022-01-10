@@ -31,7 +31,7 @@
          <TextView
              android:background="@color/white"
              android:gravity="center"
-             android:textSize="20dp"
+             android:textSize="@dimen/size_20sp"
              android:textColor="#F30C0C"
              android:textStyle="bold"
              android:text="@string/txt_loaimon"
@@ -40,7 +40,7 @@
 
          <LinearLayout
              android:background="@color/white"
-             android:layout_marginTop="20dp"
+             android:layout_marginTop="@dimen/size_20dp"
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 

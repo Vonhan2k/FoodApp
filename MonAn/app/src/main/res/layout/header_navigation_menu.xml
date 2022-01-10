@@ -7,25 +7,25 @@
         android:orientation="vertical"
         android:background="@drawable/bg_navigation"
         android:layout_width="match_parent"
-        android:layout_height="250dp">
+        android:layout_height="@dimen/size_250dp">
 
 
         <TextView
-            android:layout_marginTop="150dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginTop="@dimen/size_150dp"
+            android:layout_marginLeft="@dimen/size_30dp"
             android:textStyle="bold"
             android:textColor="#C11550"
-            android:textSize="20sp"
+            android:textSize="@dimen/size_20sp"
             android:text="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
         <TextView
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginTop="@dimen/size_5dp"
+            android:layout_marginLeft="@dimen/size_40dp"
             android:textStyle="bold"
             android:textColor="#097369"
-            android:textSize="15sp"
+            android:textSize="@dimen/size_15sp"
             android:text="@string/txt_mota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">

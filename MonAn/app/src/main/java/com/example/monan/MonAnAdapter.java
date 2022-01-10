@@ -82,7 +82,7 @@ public class MonAnAdapter extends BaseAdapter {
 
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
-        holder.txtGia.setText(  en.format(monAn.getGia()) +" đ");
+        holder.txtGia.setText( en.format(monAn.getGia()) +" đ");
         Picasso.get().load(monAn.getHinhAnh()).into(holder.imgHinh);
 
 
@@ -90,6 +90,7 @@ public class MonAnAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChonMonActivity.class);
+                intent.putExtra("dataMonAn", monAn);
                 context.startActivity(intent);
             }
         });

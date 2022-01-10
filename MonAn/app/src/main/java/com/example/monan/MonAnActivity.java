@@ -37,8 +37,8 @@ import java.util.Map;
 
 public class MonAnActivity extends AppCompatActivity {
 
-
-    String urlGetData =  "http://192.168.1.12/food-menu-vhnhan/json/monan/getdata.php";
+    //String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
+    String urlGetData =  "http://192.168.1.9/food-menu-vhnhan/json/monan/getdata.php";
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
     MonAnAdapter adapterMonAn;
@@ -138,7 +138,7 @@ public class MonAnActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThucDon:
-                    Intent intentThucDon = new Intent(MonAnActivity.this, MonAnActivity.class);
+                    Intent intentThucDon = new Intent(MonAnActivity.this, LoaiMonAnActivity.class);
                     startActivity(intentThucDon);
                     drawerLayout.closeDrawers();
                     return true;

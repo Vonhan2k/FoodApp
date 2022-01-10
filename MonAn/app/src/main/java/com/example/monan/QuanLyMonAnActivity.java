@@ -38,9 +38,9 @@ import java.util.Map;
 
 public class QuanLyMonAnActivity extends AppCompatActivity {
 
-     String urlGetData = " http://192.168.1.12/food-menu-vhnhan/json/monan/getdata.php";
-     String urlDelete = "http://192.168.1.12/food-menu-vhnhan/json/monan/delete.php";
-  /*  String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
+     String urlGetData = " http://192.168.1.9/food-menu-vhnhan/json/monan/getdata.php";
+     String urlDelete = "http://192.168.1.9/food-menu-vhnhan/json/monan/delete.php";
+    /*String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
     String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";*/
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
@@ -79,7 +79,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
        });
 
         toolbar.setNavigationIcon(R.drawable.ic_action_menu);
-        toolbar.setTitle("Thực đơn");
+        toolbar.setTitle("Quản lý");
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,7 +181,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThucDon:
-                    Intent intentThucDon = new Intent(QuanLyMonAnActivity.this, MonAnActivity.class);
+                    Intent intentThucDon = new Intent(QuanLyMonAnActivity.this, LoaiMonAnActivity.class);
                     startActivity(intentThucDon);
                     drawerLayout.closeDrawers();
                     return true;

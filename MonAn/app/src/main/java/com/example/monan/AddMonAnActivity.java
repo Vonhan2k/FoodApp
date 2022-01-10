@@ -62,13 +62,11 @@ public class AddMonAnActivity extends AppCompatActivity {
 
 
 
+    String urlGetData = " http://192.168.1.9/food-menu-vhnhan/json/loaimon/getdata.php";
+    String urlInsert = " http://192.168.1.9/food-menu-vhnhan/json/monan/insert.php";
 
-    String urlGetData = " http://192.168.1.12/food-menu-vhnhan/json/loaimon/getdata.php";
-    String urlInsert = " http://192.168.1.12/food-menu-vhnhan/json/monan/insert.php";
-
-   /* String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
-    String urlInsert = "http://food-menu-vhnhan.herokuapp.com/json/monan/insert.php";
-*/
+  /*  String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
+    String urlInsert = "http://food-menu-vhnhan.herokuapp.com/json/monan/insert.php";*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
