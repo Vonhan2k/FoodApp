@@ -1,3 +1,33 @@
 <resources>
-    <string name="app_name">MonAn</string>
+    <string name="app_name">Food Menu</string>
+    <string name="themmonan">THÊM MÓN ĂN</string>
+    <string name="chuphinh">Chụp hình</string>
+    <string name="chonhinh">Chọn hình</string>
+    <string name="tenmonan">Tên Món Ăn:</string>
+    <string name="nhap_tenmonan">Nhập Tên món ăn</string>
+    <string name="giatien">Giá Tiền: </string>
+    <string name="nhap_giatien">Nhập Giá tiền</string>
+    <string name="loaimonan">Loại Món Ăn: </string>
+    <string name="btn_them">Thêm</string>
+    <string name="txt_ten">Cơm chiên</string>
+    <string name="txt_gia">100,000 đ</string>
+    <string name="btn_giam">-</string>
+    <string name="txt_soluong">1</string>
+    <string name="btn_tang">+</string>
+    <string name="btn_thoat">Thoát</string>
+    <string name="txt_tongtien">Tổng Cộng :</string>
+    <string name="txt_tien">150,000 đ</string>
+    <string name="btn_chon">Chọn món</string>
+    <string name="txt_tieude">Thực đơn</string>
+    <string name="ibtn_home">Trang Chủ</string>
+    <string name="ibtn_monan">Thực Đơn</string>
+    <string name="ibtn_nhanvien">Nhân Viên</string>
+    <string name="ibtn_quanly">Quản Lý</string>
+    <string name="txt_loaimon"> Loại món</string>
+    <string name="capnhatmonan">CẬP NHẬT MÓN ĂN</string>
+    <string name="capnhat">Cập nhật</string>
+    <string name="tenloai">Tên Loại Món Ăn</string>
+    <string name="txt_mota">Ngon - Bổ - Rẻ</string>
+
+
 </resources>

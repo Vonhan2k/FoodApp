@@ -16,7 +16,7 @@
             android:textStyle="bold"
             android:textColor="#C11550"
             android:textSize="20sp"
-            android:text="FOOD MENU"
+            android:text="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
@@ -26,7 +26,7 @@
             android:textStyle="bold"
             android:textColor="#097369"
             android:textSize="15sp"
-            android:text="Ngon - Bổ - Rẻ"
+            android:text="@string/txt_mota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>

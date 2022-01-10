@@ -18,7 +18,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/imageViewHinh"
-        android:text="Tên món ăn: cơm"
+        android:text="@string/tenmonan"
         android:textColor="#0d00ff"
         android:textSize="24sp"
         android:textStyle="bold"></TextView>
@@ -32,7 +32,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/imageViewHinh"
-        android:text="Giá: 20000"
+        android:text="@string/giatien"
         android:textColor="#539308"
         android:textSize="24sp"
         android:textStyle="bold"></TextView>
@@ -52,7 +52,6 @@
         android:layout_toLeftOf="@+id/imageviewEdit"
         android:id="@+id/imageviewDelete"
         android:layout_marginTop="15dp"
-
         android:src="@android:drawable/ic_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></ImageView>

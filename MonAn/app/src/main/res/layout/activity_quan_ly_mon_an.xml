@@ -24,7 +24,7 @@
              android:layout_height="?attr/actionBarSize"
              android:background="#2196F3"
              app:menu="@menu/add_mon_an"
-             app:title="Thực đơn"
+             app:title="@string/txt_tieude"
              android:id="@+id/toolbar">
 
          </androidx.appcompat.widget.Toolbar>
@@ -34,9 +34,7 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-
             <ListView
-
                 android:id="@+id/listviewMonAn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

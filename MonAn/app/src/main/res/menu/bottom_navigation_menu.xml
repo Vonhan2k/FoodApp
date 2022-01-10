@@ -4,22 +4,22 @@
         android:id="@+id/btnTrangChu"
         android:enabled="true"
         android:icon="@drawable/trangchu"
-        android:title="Trang Chủ"/>
+        android:title="@string/ibtn_home"/>
     <item
         android:id="@+id/btnThucDon"
         android:enabled="true"
         android:icon="@drawable/menu"
-        android:title="Thực đơn"/>
+        android:title="@string/ibtn_monan"/>
 
     <item
         android:id="@+id/btnQuanLy"
         android:enabled="true"
         android:icon="@drawable/employee"
-        android:title="Quản lý"/>
+        android:title="@string/ibtn_quanly"/>
     <item
         android:id="@+id/btnThoat"
         android:enabled="true"
         android:icon="@drawable/exit_ct"
-        android:title="Thoát ứng dụng"/>
+        android:title="@string/btn_thoat"/>
 
 </menu>

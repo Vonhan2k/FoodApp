@@ -32,7 +32,7 @@
            android:textStyle="bold"
            android:layout_marginTop="10dp"
            android:layout_gravity="center"
-           android:hint="Tên Loại Món Ăn"
+           android:hint="@string/tenloai"
             />
    </LinearLayout>
 </LinearLayout>

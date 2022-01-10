@@ -34,7 +34,7 @@
              android:textSize="20dp"
              android:textColor="#F30C0C"
              android:textStyle="bold"
-             android:text="Loại món"
+             android:text="@string/txt_loaimon"
              android:layout_width="match_parent"
              android:layout_height="50dp"></TextView>
 

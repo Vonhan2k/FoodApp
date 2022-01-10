@@ -32,7 +32,7 @@
             android:textSize="35dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="Cơm chiên"
+            android:text="@string/txt_ten"
             android:layout_width="300dp"
             android:layout_height="match_parent"></TextView>
 
@@ -41,7 +41,7 @@
             android:textSize="35dp"
             android:textColor="#BD0F0F"
             android:textStyle="bold"
-            android:text="100,000 đ"
+            android:text="@string/txt_gia"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></TextView>
     </LinearLayout>
@@ -58,7 +58,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="35dp"
-            android:text="-"
+            android:text="@string/btn_giam"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"></Button>
 
@@ -72,7 +72,7 @@
             android:textSize="35dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:text="1"
+            android:text="@string/txt_soluong"
             android:layout_width="100dp"
             android:layout_height="match_parent"></TextView>
 
@@ -84,7 +84,7 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="35dp"
-            android:text="+"
+            android:text="@string/btn_tang"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"></Button>
     </LinearLayout>
@@ -98,7 +98,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/black"
-            android:text="Tổng Cộng :"
+            android:text="@string/txt_tongtien"
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
@@ -111,7 +111,7 @@
             android:layout_marginLeft="80dp"
             android:layout_marginTop="10dp"
             android:textColor="#AE0A0A"
-            android:text="150,000 đ"
+            android:text=""
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"></TextView>
 
@@ -127,7 +127,7 @@
             android:textStyle="bold"
             android:layout_margin="10dp"
             android:backgroundTint="#AE0A0A"
-            android:text="Chọn món"
+            android:text="@string/btn_chon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></Button>
 

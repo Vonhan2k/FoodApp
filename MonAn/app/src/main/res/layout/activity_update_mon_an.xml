@@ -12,7 +12,7 @@
         android:textSize="25dp"
         android:textColor="#F40101"
         android:textStyle="bold"
-        android:text="CẬP NHẬT MÓN ĂN"
+        android:text="@string/capnhatmonan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </TextView>
@@ -41,7 +41,7 @@
                 android:textColor="@color/black"
                 android:backgroundTint="#C3BEBE"
                 android:id="@+id/buttonChupHinh"
-                android:text="Chụp hình"
+                android:text="@string/chuphinh"
                 android:gravity="center"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"></Button>
@@ -52,7 +52,7 @@
                 android:textColor="@color/black"
                 android:backgroundTint="#C3BEBE"
                 android:id="@+id/buttonChonHinh"
-                android:text="Chọn hình"
+                android:text="@string/chonhinh"
                 android:gravity="center"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"></Button>
@@ -69,7 +69,7 @@
             android:paddingLeft="10dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:text="Tên Món Ăn: "
+            android:text="@string/tenmonan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
@@ -77,7 +77,7 @@
         <EditText
             android:layout_marginLeft="14dp"
             android:id="@+id/editTextTenMonAn"
-            android:hint="Nhập Tên món ăn"
+            android:hint="@string/nhap_tenmonan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </EditText>
@@ -91,7 +91,7 @@
             android:paddingLeft="10dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:text="Giá Tiền: "
+            android:text="@string/giatien"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
@@ -100,7 +100,7 @@
             android:inputType="number"
             android:layout_marginLeft="47dp"
             android:id="@+id/editTextGiaTien"
-            android:hint="Nhập Giá tiền"
+            android:hint="@string/nhap_giatien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </EditText>
@@ -115,7 +115,7 @@
             android:paddingLeft="10dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:text="Loại Món Ăn: "
+            android:text="@string/loaimonan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </TextView>
@@ -140,7 +140,7 @@
             android:backgroundTint="#D1CBCB"
             android:layout_marginLeft="50dp"
             android:padding="10dp"
-            android:text="Cập nhật"
+            android:text="@string/capnhat"
             android:layout_width="150dp"
             android:layout_height="wrap_content">
         </Button>
@@ -151,7 +151,7 @@
             android:backgroundTint="#D1CBCB"
             android:layout_marginLeft="50dp"
             android:padding="10dp"
-            android:text="Thoát"
+            android:text="@string/btn_thoat"
             android:layout_width="150dp"
             android:layout_height="wrap_content">
         </Button>

@@ -46,12 +46,17 @@ public class MonAnActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     int maloai = 0;
+    LoaiMonAn loaiMonAn;
     ArrayList<String> names = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mon_an);
+
+        Intent intent = getIntent();
+        loaiMonAn = (LoaiMonAn) intent.getSerializableExtra("data");
+
 
 
         lvMonAn = (ListView) findViewById(R.id.listviewMonAn);
@@ -104,10 +109,18 @@ public class MonAnActivity extends AppCompatActivity {
             new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(MonAnActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MonAnActivity.this, error.toString(), Toast.LENGTH_LONG).show();
                 }
             }
-        );
+        ){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("maloai", String.valueOf(loaiMonAn.getMaloai()));
+                return params;
+            }
+        };
         requestQueue.add(jsonArrayRequest);
     }
 
