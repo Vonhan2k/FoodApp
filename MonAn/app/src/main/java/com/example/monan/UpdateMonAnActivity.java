@@ -56,8 +56,8 @@ public class UpdateMonAnActivity extends AppCompatActivity {
     Bitmap bitmap;
 
 
-    String urlGetData = " http://192.168.1.9/food-menu-vhnhan/json/loaimon/getdata.php";
-    String urlUpdate = " http://192.168.1.9/food-menu-vhnhan/json/monan/update.php";
+    String urlGetData = " http://192.168.1.91/food-menu-vhnhan/json/loaimon/getdata.php";
+    String urlUpdate = " http://192.168.1.91/food-menu-vhnhan/json/monan/update.php";
 /*    String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
     String urlUpdate = "http://food-menu-vhnhan.herokuapp.com/json/monan/update.php";*/
 

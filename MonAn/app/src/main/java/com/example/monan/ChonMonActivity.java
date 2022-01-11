@@ -1,5 +1,6 @@
 package com.example.monan;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,10 +14,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class ChonMonActivity extends AppCompatActivity {
 
@@ -27,6 +37,10 @@ public class ChonMonActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     int soluong = 1;
     int tongtien, dongia = 0;
+    int mamon = 0;
+
+    String urlInsert = " http://192.168.1.91/food-menu-vhnhan/json/datmon/insert.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +52,12 @@ public class ChonMonActivity extends AppCompatActivity {
         Intent intent = getIntent();
         MonAn monAn = (MonAn) intent.getSerializableExtra("dataMonAn");
 
+        mamon = monAn.getMaMon();
         txtTenMonAn.setText(monAn.getTenMon());
         // tạo 1 NumberFormat để định dạng số theo tiêu chuẩn của nước Anh
         Locale localeEN = new Locale("en", "EN");
         NumberFormat en = NumberFormat.getInstance(localeEN);
+
 
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
@@ -76,7 +92,6 @@ public class ChonMonActivity extends AppCompatActivity {
                     txtSoLuong.setText(soluong+"");
                     txtTongTien.setText(en.format(tongtien)+" đ");
                 }
-
             }
         });
 
@@ -95,6 +110,48 @@ public class ChonMonActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnChonMon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ThemChonMon(urlInsert);
+            }
+        });
+    }
+
+    private void ThemChonMon(String url){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (response.trim().equals("success")){
+                    Toast.makeText(ChonMonActivity.this, "Chọn món thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ChonMonActivity.this, MonAnActivity.class);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(ChonMonActivity.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("monan_id",mamon+"");
+                params.put("dongia", dongia+"");
+                params.put("soluong",txtSoLuong.getText().toString().trim());
+                params.put("thanhtien", tongtien+"");
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(stringRequest);
     }
 
     private void AnhXa(){

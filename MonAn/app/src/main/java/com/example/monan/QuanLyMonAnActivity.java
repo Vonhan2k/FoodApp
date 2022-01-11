@@ -38,8 +38,8 @@ import java.util.Map;
 
 public class QuanLyMonAnActivity extends AppCompatActivity {
 
-     String urlGetData = " http://192.168.1.9/food-menu-vhnhan/json/monan/getdata.php";
-     String urlDelete = "http://192.168.1.9/food-menu-vhnhan/json/monan/delete.php";
+     String urlGetData = " http://192.168.1.91/food-menu-vhnhan/json/monan/getdata.php";
+     String urlDelete = "http://192.168.1.91/food-menu-vhnhan/json/monan/delete.php";
     /*String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
     String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";*/
     ListView lvMonAn;
