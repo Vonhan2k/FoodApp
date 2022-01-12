@@ -69,10 +69,11 @@
                 android:id="@+id/radiobutton_nam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name"
+                android:text="Nam"
                 android:checked="true"></RadioButton>
 
             <RadioButton
+                android:layout_marginLeft="@dimen/size_10dp"
                 android:id="@+id/radiobutton_nu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,15 +94,15 @@
             android:textSize="20dp"></EditText>
 
         <EditText
-            android:id="@+id/edit_chungminhnhandan"
+            android:id="@+id/edit_hoten"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/size_10dp"
             android:background="@color/white"
             android:drawableLeft="@drawable/idcard"
             android:drawablePadding="@dimen/size_10dp"
-            android:hint="@string/chungminhnhandan"
-            android:numeric="integer"
+            android:hint="@string/hoten"
+
             android:padding="@dimen/size_10dp"
             android:singleLine="true"
             android:maxLength="8"

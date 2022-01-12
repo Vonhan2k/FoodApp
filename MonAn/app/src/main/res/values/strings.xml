@@ -38,4 +38,5 @@
     <string name="ngaysinh">Ngày Sinh</string>
     <string name="chungminhnhandan">Chứng Minh Nhân Dân</string>
     <string name="thoat">Thoát</string>
+    <string name="hoten">Họ Tên</string>
 </resources>
