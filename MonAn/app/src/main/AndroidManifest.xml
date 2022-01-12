@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MonAn">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChonMonActivity"
             android:exported="false" />
         <activity
@@ -26,7 +29,7 @@
             android:name=".QuanLyMonAnActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".DangNhapActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

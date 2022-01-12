@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         imgIconNhanVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Intent intent = new Intent(MainActivity.this, NhanVienActivity.class);
-               // startActivity(intent);
+                Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
+                startActivity(intent);
                 overridePendingTransition(0,0);
             }
         });

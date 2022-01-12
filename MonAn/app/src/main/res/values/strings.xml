@@ -28,6 +28,11 @@
     <string name="capnhat">Cập nhật</string>
     <string name="tenloai">Tên Loại Món Ăn</string>
     <string name="txt_mota">Ngon - Bổ - Rẻ</string>
-
-
+    <string name="ten_dang_nhap">Tên đăng nhập</string>
+    <string name="matkhau">Mật Khẩu</string>
+    <string name="tendangnhap">Vui lòng nhập tên đăng nhập</string>
+    <string name="dangnhap">Đăng Nhập</string>
+    <string name="dongy">Đồng Ý</string>
+    <string name="dangky">Đăng Ký</string>
+    <string name="nhapmatkhau">Vui lòng nhập mật khẩu bạn ơi</string>
 </resources>
