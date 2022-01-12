@@ -35,4 +35,7 @@
     <string name="dongy">Đồng Ý</string>
     <string name="dangky">Đăng Ký</string>
     <string name="nhapmatkhau">Vui lòng nhập mật khẩu bạn ơi</string>
+    <string name="ngaysinh">Ngày Sinh</string>
+    <string name="chungminhnhandan">Chứng Minh Nhân Dân</string>
+    <string name="thoat">Thoát</string>
 </resources>

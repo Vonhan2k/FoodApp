@@ -61,6 +61,14 @@ public class DangNhapActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnDangKyDN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
+                startActivity(intentDangKy);
+            }
+        });
     }
     private void GetData(String tendangnhap, String matkhau){
 
