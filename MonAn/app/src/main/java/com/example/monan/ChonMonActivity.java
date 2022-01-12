@@ -39,7 +39,7 @@ public class ChonMonActivity extends AppCompatActivity {
     int tongtien, dongia = 0;
     int mamon = 0;
 
-    String urlInsert = " http://192.168.1.91/food-menu-vhnhan/json/datmon/insert.php";
+    String urlInsert = " http://192.168.1.8/food-menu-vhnhan/json/datmon/insert.php";
 
 
     @Override
@@ -126,7 +126,7 @@ public class ChonMonActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 if (response.trim().equals("success")){
                     Toast.makeText(ChonMonActivity.this, "Chọn món thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ChonMonActivity.this, MonAnActivity.class);
+                    Intent intent = new Intent(ChonMonActivity.this, LoaiMonAnActivity.class);
                     startActivity(intent);
                 } else{
                     Toast.makeText(ChonMonActivity.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();

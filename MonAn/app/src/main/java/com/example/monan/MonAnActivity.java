@@ -37,8 +37,7 @@ import java.util.Map;
 
 public class MonAnActivity extends AppCompatActivity {
 
-    //String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
-    String urlGetData =  "http://192.168.1.91/food-menu-vhnhan/json/monan/getdata.php";
+
     ListView lvMonAn;
     ArrayList<MonAn> arrayMonAn;
     MonAnAdapter adapterMonAn;
@@ -47,26 +46,32 @@ public class MonAnActivity extends AppCompatActivity {
     NavigationView navigationView;
     int maloai = 0;
     LoaiMonAn loaiMonAn;
-    ArrayList<String> names = new ArrayList<String>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mon_an);
 
+
+        //Nhận intent Loại món
         Intent intent = getIntent();
         loaiMonAn = (LoaiMonAn) intent.getSerializableExtra("data");
 
+        maloai = loaiMonAn.getMaloai();
 
-
+        //Anh Xa
         lvMonAn = (ListView) findViewById(R.id.listviewMonAn);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
+        //Hiển thị toolBar
+        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Thực đơn");
+        //Click trở về trang trước
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,19 +79,22 @@ public class MonAnActivity extends AppCompatActivity {
             }
         });
 
+        //Adapter Hiển thị listview Món ăn
         arrayMonAn = new ArrayList<>();
         adapterMonAn = new MonAnAdapter(MonAnActivity.this, R.layout.dong_mon_an_hien_thi, arrayMonAn);
         lvMonAn.setAdapter(adapterMonAn);
 
-        GetData(urlGetData);
-
+        //Get dữ liệu từ Server
+        GetData(maloai);
 
 
     }
 
-    private void GetData(String url){
+    //Get dữ liệu món ăn theo loại món
+    private void GetData(int maloai){
+        String urlGetData =  "http://192.168.1.8/food-menu-vhnhan/json/monan/getdata_id.php?maloai="+ maloai;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlGetData, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 arrayMonAn.clear();
@@ -115,9 +123,10 @@ public class MonAnActivity extends AppCompatActivity {
         ){
             @Nullable
             @Override
+            //Gửi dữ liệu mã loại lên Server
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("maloai", String.valueOf(loaiMonAn.getMaloai()));
+                params.put("maloai",maloai+"");
                 return params;
             }
         };
@@ -125,7 +134,7 @@ public class MonAnActivity extends AppCompatActivity {
     }
 
 
-
+    //Navigation View
     private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new NavigationView.OnNavigationItemSelectedListener() {
 
