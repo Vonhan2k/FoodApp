@@ -80,6 +80,7 @@ public class UpdateMonAnActivity extends AppCompatActivity {
         Picasso.get().load(monAn.getHinhAnh()).into(imageHinh);
 
 
+
         //Chup hình
         btnChupHinh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +159,7 @@ public class UpdateMonAnActivity extends AppCompatActivity {
                 //Đổ dữ liệu lên spinner
                 for (int i = 0; i < arrayLoaiMon.size(); i++){
                     names.add(arrayLoaiMon.get(i).getTenLoai().toString());
+
                 }
                 ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(UpdateMonAnActivity.this, android.R.layout.simple_spinner_item, names);
                 spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
@@ -223,7 +225,7 @@ public class UpdateMonAnActivity extends AppCompatActivity {
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageHinh.setImageBitmap(bitmap);
             encodeBitmapImage(bitmap);
-            Toast.makeText(UpdateMonAnActivity.this, encodeImageString+"", Toast.LENGTH_SHORT).show();
+
         }
         if (requestCode == AddMonAnActivity.REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null){
             Uri uri = data.getData();

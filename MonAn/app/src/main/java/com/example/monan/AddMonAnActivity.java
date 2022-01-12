@@ -223,6 +223,7 @@ public class AddMonAnActivity extends AppCompatActivity {
         if (requestCode == AddMonAnActivity.REQUEST_CODE_CAMERA && resultCode == RESULT_OK && data != null){
             Bitmap bitmap = (Bitmap) data.getExtras().get("data");
             imageHinh.setImageBitmap(bitmap);
+            encodeBitmapImage(bitmap);
         }
         if (requestCode == AddMonAnActivity.REQUEST_CODE_FOLDER && resultCode == RESULT_OK && data != null){
             Uri uri = data.getData();
