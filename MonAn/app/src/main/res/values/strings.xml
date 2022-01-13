@@ -24,6 +24,7 @@
     <string name="ibtn_nhanvien">Nhân Viên</string>
     <string name="ibtn_quanly">Quản Lý</string>
     <string name="txt_loaimon"> Loại món</string>
+    <string name="txt_monan"> Món Ăn</string>
     <string name="capnhatmonan">CẬP NHẬT MÓN ĂN</string>
     <string name="capnhat">Cập nhật</string>
     <string name="tenloai">Tên Loại Món Ăn</string>

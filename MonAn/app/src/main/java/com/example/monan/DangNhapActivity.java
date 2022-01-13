@@ -32,9 +32,9 @@ import java.util.Map;
 
 public class DangNhapActivity extends AppCompatActivity {
 
-    String urlGetData =  "http://192.168.1.8/food-menu-vhnhan/json/nguoidung/dangnhap.php";
+    String urlGetData =  "http://192.168.1.9/food-menu-vhnhan/json/nguoidung/dangnhap.php";
 
-    Button btnDongYDN, btnDangKyDN;
+    Button btnDongYDN;
     EditText edit_TenDangNhapDN,edit_MatKhauDN;
     String tendangnhap = "";
     String matkhau = "";
@@ -62,13 +62,7 @@ public class DangNhapActivity extends AppCompatActivity {
             }
         });
 
-        btnDangKyDN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentDangKy = new Intent(DangNhapActivity.this, DangKyActivity.class);
-                startActivity(intentDangKy);
-            }
-        });
+
     }
     private void GetData(String tendangnhap, String matkhau){
 
@@ -83,9 +77,12 @@ public class DangNhapActivity extends AppCompatActivity {
                                 if (jsonObject.getInt("success") == 1) {
                                     NguoiDung account = new NguoiDung();
                                     account.setTendangnhap(jsonObject.getString("tendangnhap"));
+                                    account.setHoten((jsonObject.getString("hoten")));
+                                    account.setLoaiquyen((jsonObject.getInt("loaiquyen")));
 
-                                    message = jsonObject.getString("message");
+
                                     Intent intentTrangChu = new Intent(DangNhapActivity.this, MainActivity.class);
+                                    intentTrangChu.putExtra("login", account);
                                     startActivity(intentTrangChu);
 
                                 } else {
@@ -121,7 +118,6 @@ public class DangNhapActivity extends AppCompatActivity {
 
 
     private void AnhXa() {
-        btnDangKyDN = (Button) findViewById(R.id.btnDangKyDN);
         btnDongYDN = (Button) findViewById(R.id.btnDongYDN);
         edit_TenDangNhapDN = (EditText) findViewById(R.id.edit_TenDangNhapDN);
         edit_MatKhauDN = (EditText) findViewById(R.id.edit_MatKhauDN);

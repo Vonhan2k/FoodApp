@@ -39,7 +39,7 @@ public class ChonMonActivity extends AppCompatActivity {
     int tongtien, dongia = 0;
     int mamon = 0;
 
-    String urlInsert = " http://192.168.1.8/food-menu-vhnhan/json/datmon/insert.php";
+    String urlInsert = " http://192.168.1.9/food-menu-vhnhan/json/datmon/insert.php";
 
 
     @Override

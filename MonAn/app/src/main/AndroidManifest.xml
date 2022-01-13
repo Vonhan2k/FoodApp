@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MonAn">
         <activity
-            android:name=".DangKyActivity"
-            android:exported="false" />
-        <activity
             android:name=".DangNhapActivity"
             android:exported="false" />
         <activity

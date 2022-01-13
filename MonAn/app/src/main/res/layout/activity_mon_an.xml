@@ -34,7 +34,7 @@
              android:textSize="@dimen/size_20sp"
              android:textColor="#F30C0C"
              android:textStyle="bold"
-             android:text="@string/txt_loaimon"
+             android:text="@string/txt_monan"
              android:layout_width="match_parent"
              android:layout_height="50dp"></TextView>
 
