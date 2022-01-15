@@ -23,6 +23,7 @@ public class LoaiMonAnAdapter extends BaseAdapter {
     private LoaiMonAnActivity context;
     private int layout;
     private List<LoaiMonAn> loaiMonAnList;
+    NguoiDung account;
 
     public LoaiMonAnAdapter(LoaiMonAnActivity context, int layout, List<LoaiMonAn> loaiMonAnList) {
         this.context = context;
@@ -73,6 +74,7 @@ public class LoaiMonAnAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Intent intent = new Intent(context, MonAnActivity.class);
                 intent.putExtra("data", loaiMonAn);
+                intent.putExtra("login", account);
                 context.startActivity(intent);
             }
         });

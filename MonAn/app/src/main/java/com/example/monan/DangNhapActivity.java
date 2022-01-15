@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class DangNhapActivity extends AppCompatActivity {
 
-    String urlGetData =  "http://192.168.1.9/food-menu-vhnhan/json/nguoidung/dangnhap.php";
+    String urlGetData =  "http://192.168.1.5/food-menu-vhnhan/json/nguoidung/dangnhap.php";
 
     Button btnDongYDN;
     EditText edit_TenDangNhapDN,edit_MatKhauDN;

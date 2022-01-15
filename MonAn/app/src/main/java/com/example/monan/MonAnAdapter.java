@@ -26,6 +26,7 @@ public class MonAnAdapter extends BaseAdapter {
     private MonAnActivity context;
     private int layout;
     private List<MonAn> monAnList;
+    NguoiDung account;
 
     public MonAnAdapter(MonAnActivity context, int layout, List<MonAn> monAnList) {
         this.context = context;
@@ -91,6 +92,7 @@ public class MonAnAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Intent intent = new Intent(context, ChonMonActivity.class);
                 intent.putExtra("dataMonAn", monAn);
+                intent.putExtra("login", account);
                 context.startActivity(intent);
             }
         });

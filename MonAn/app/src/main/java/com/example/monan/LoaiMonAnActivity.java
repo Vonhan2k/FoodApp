@@ -40,16 +40,22 @@ public class LoaiMonAnActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
-    private List<LoaiMon> loaiMonList;
 
+    NguoiDung account;
 
 
     //String url = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
-    String url = "http://192.168.1.9/food-menu-vhnhan/json/loaimon/getdata.php";
+    String url = "http://192.168.1.5/food-menu-vhnhan/json/loaimon/getdata.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loai_mon_an);
+
+
+        Intent intent = getIntent();
+        account = new NguoiDung();
+        account = (NguoiDung) intent.getSerializableExtra("login");
+
 
         // custom listview
         gvDanhSachLoaiMonAn  = (GridView) findViewById(R.id.gridViewLoaiMonAn);
@@ -73,6 +79,7 @@ public class LoaiMonAnActivity extends AppCompatActivity {
         // kết thức custom listview
 
         GetDataLoaiMon(url);
+
 
 
     }
@@ -118,7 +125,9 @@ public class LoaiMonAnActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.btnTrangChu:
                     Intent intentTrangChu = new Intent(LoaiMonAnActivity.this, MainActivity.class);
+                    intentTrangChu.putExtra("login", account);
                     startActivity(intentTrangChu);
+
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThucDon:
@@ -127,9 +136,13 @@ public class LoaiMonAnActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnQuanLy:
-                    Intent intentQuanLy = new Intent(LoaiMonAnActivity.this, QuanLyMonAnActivity.class);
-                    startActivity(intentQuanLy);
-                    drawerLayout.closeDrawers();
+                    if (account.getLoaiquyen() == 0){
+                        Intent intentQuanLy = new Intent(LoaiMonAnActivity.this, QuanLyMonAnActivity.class);
+                        startActivity(intentQuanLy);
+                        overridePendingTransition(0,0);
+                        drawerLayout.closeDrawers();
+                    } else
+                        Toast.makeText(LoaiMonAnActivity.this, "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.btnThoat:
                     AlertDialog.Builder dialogThoat = new AlertDialog.Builder(LoaiMonAnActivity.this,R.style.Theme_Design_Light);

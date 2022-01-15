@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         account = new NguoiDung();
         account = (NguoiDung) intent.getSerializableExtra("login");
 
+
         //Su kien click cac imgIcon
         imgIconTrangChu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intentMonAn = new Intent(MainActivity.this, LoaiMonAnActivity.class);
                 startActivity(intentMonAn);
+
+                Intent intentTrangChu = new Intent(MainActivity.this, LoaiMonAnActivity.class);
+                intentTrangChu.putExtra("login", account);
+                startActivity(intentTrangChu);
                 overridePendingTransition(0,0);
             }
         });
