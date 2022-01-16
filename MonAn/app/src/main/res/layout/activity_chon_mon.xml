@@ -41,7 +41,7 @@
         <ImageView
             android:id="@+id/imageviewHinhMon"
             android:layout_gravity="center"
-            android:src="@drawable/food_default"
+            android:src="@drawable/food"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_250dp">
 

@@ -32,7 +32,7 @@ import java.util.Map;
 
 public class DangNhapActivity extends AppCompatActivity {
 
-    String urlGetData =  "http://192.168.1.5/food-menu-vhnhan/json/nguoidung/dangnhap.php";
+    String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/nguoidung/dangnhap.php";
 
     Button btnDongYDN;
     EditText edit_TenDangNhapDN,edit_MatKhauDN;
@@ -45,8 +45,11 @@ public class DangNhapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+        btnDongYDN = (Button) findViewById(R.id.btnDongYDN);
+        edit_TenDangNhapDN = (EditText) findViewById(R.id.edit_TenDangNhapDN);
+        edit_MatKhauDN = (EditText) findViewById(R.id.edit_MatKhauDN);
 
-        AnhXa();
+        //AnhXa();
 
         btnDongYDN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,10 +120,10 @@ public class DangNhapActivity extends AppCompatActivity {
 
 
 
-    private void AnhXa() {
-        btnDongYDN = (Button) findViewById(R.id.btnDongYDN);
-        edit_TenDangNhapDN = (EditText) findViewById(R.id.edit_TenDangNhapDN);
-        edit_MatKhauDN = (EditText) findViewById(R.id.edit_MatKhauDN);
-
-    }
+//    private void AnhXa() {
+//        btnDongYDN = (Button) findViewById(R.id.btnDongYDN);
+//        edit_TenDangNhapDN = (EditText) findViewById(R.id.edit_TenDangNhapDN);
+//        edit_MatKhauDN = (EditText) findViewById(R.id.edit_MatKhauDN);
+//
+//    }
 }

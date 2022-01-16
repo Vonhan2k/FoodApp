@@ -5,4 +5,10 @@
         android:id="@+id/menu_add_mon_an"
         android:icon="@android:drawable/ic_input_add"
         app:showAsAction="always"></item>
+    <item android:title="@string/xemgiohang"
+        android:id="@+id/menu_view_gio_hang"
+        android:icon="@android:drawable/ic_menu_view"
+        app:showAsAction="always">
+
+    </item>
 </menu>

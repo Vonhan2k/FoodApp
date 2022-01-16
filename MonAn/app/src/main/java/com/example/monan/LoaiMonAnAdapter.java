@@ -3,6 +3,7 @@ package com.example.monan;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +25,6 @@ public class LoaiMonAnAdapter extends BaseAdapter {
     private LoaiMonAnActivity context;
     private int layout;
     private List<LoaiMonAn> loaiMonAnList;
-    NguoiDung account;
 
     public LoaiMonAnAdapter(LoaiMonAnActivity context, int layout, List<LoaiMonAn> loaiMonAnList) {
         this.context = context;
@@ -70,11 +71,13 @@ public class LoaiMonAnAdapter extends BaseAdapter {
 
         //bat su kien xóa và sửa
         holder.imgLoaiMonAn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(context, MonAnActivity.class);
                 intent.putExtra("data", loaiMonAn);
-                intent.putExtra("login", account);
+
                 context.startActivity(intent);
             }
         });

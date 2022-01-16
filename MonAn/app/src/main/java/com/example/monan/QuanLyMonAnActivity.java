@@ -38,8 +38,8 @@ import java.util.Map;
 
 public class QuanLyMonAnActivity extends AppCompatActivity {
 
-     String urlGetData = " http://192.168.1.5/food-menu-vhnhan/json/monan/getdata.php";
-     String urlDelete = "http://192.168.1.5/food-menu-vhnhan/json/monan/delete.php";
+     String urlGetData = " http://192.168.1.3/food-menu-vhnhan/json/monan/getdata.php";
+     String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/monan/delete.php";
     /*String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
     String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";*/
     ListView lvMonAn;
@@ -73,6 +73,9 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                    case R.id.menu_add_mon_an:
                        Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, AddMonAnActivity.class);
                        startActivity(intentQuanLy);
+                   case R.id.menu_view_gio_hang:
+                        Intent intentGioHang = new Intent(QuanLyMonAnActivity.this,XemGioHang.class);
+                        startActivity(intentGioHang);
                }
                return false;
            }

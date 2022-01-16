@@ -49,11 +49,11 @@
         android:layout_height="wrap_content"></ImageView>
 
     <ImageView
-        android:layout_toLeftOf="@+id/imageviewEdit"
         android:id="@+id/imageviewDelete"
-        android:layout_marginTop="@dimen/size_15dp"
-        android:src="@android:drawable/ic_delete"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"></ImageView>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_15dp"
+        android:layout_toLeftOf="@+id/imageviewEdit"
+        android:src="@android:drawable/ic_delete"></ImageView>
 
 </RelativeLayout>
