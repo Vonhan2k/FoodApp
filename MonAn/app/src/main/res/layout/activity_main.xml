@@ -161,7 +161,7 @@
                 android:layout_height="@dimen/size_200dp">
 
                 <ImageView
-                    android:id="@+id/imageviewIconQuanLyChonMon"
+                    android:id="@+id/imageviewDatMon"
                     android:layout_marginTop="@dimen/size_25dp"
                     android:layout_marginLeft="@dimen/size_35dp"
                     android:src="@drawable/person"
@@ -175,7 +175,7 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="@dimen/size_20sp"
-                    android:text="@string/ibtn_nhanvien"
+                    android:text="@string/ibtn_datmon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
