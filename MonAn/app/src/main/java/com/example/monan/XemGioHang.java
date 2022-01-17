@@ -3,6 +3,7 @@ package com.example.monan;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,11 +28,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class XemGioHang extends AppCompatActivity {
-    ListView lvdanhsachmongiohang;
+    public static ListView lvdanhsachmongiohang;
     ArrayList<MonAnGioHang> arrayListMonAnGioHang;
     MonAnGioHangAdapter adapterMonAn;
-    String urlGetData =  "http://192.168.1.2/food-menu-vhnhan/json/datmon/getdata.php";
-    String urlDelete = "http://192.168.1.2/food-menu-vhnhan/json/datmon/delete.php";
+    String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/datmon/getdata.php";
+    String urlDelete = "http://192.168.1.6/food-menu-vhnhan/json/datmon/delete.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +46,15 @@ public class XemGioHang extends AppCompatActivity {
         GetData(urlGetData);
 
 
+      /*  lvdanhsachmongiohang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                MonAnGioHang monAnGioHang = new MonAnGioHang();
 
+            }
+        });
 
-
+*/
     }
     private void GetData(String url){
 

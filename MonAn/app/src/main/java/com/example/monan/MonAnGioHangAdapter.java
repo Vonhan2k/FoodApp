@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -90,6 +91,15 @@ public class MonAnGioHangAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 XacNhanXoa(chonMon.getTenmon(), chonMon.getId());
+            }
+        });
+
+        XemGioHang.lvdanhsachmongiohang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(context, ThanhToanActivity.class);
+                intent.putExtra("data", chonMon);
+                context.startActivity(intent);
             }
         });
 

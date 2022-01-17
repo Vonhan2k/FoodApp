@@ -19,6 +19,9 @@ public class MonAnGioHang implements Serializable {
 
     }
 
+    public MonAnGioHang() {
+    }
+
     public MonAnGioHang(String tenmon, int dongia, int soluong, int thanhtien, int id) {
         this.tenmon = tenmon;
         this.dongia = dongia;
