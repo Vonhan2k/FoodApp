@@ -40,6 +40,7 @@ public class DangNhapActivity extends AppCompatActivity {
     String matkhau = "";
     ArrayList<NguoiDung> arrayNguoiDung;
     ArrayAdapter adapterNguoiDung;
+    public static NguoiDung account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,14 +79,14 @@ public class DangNhapActivity extends AppCompatActivity {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if (jsonObject.getInt("success") == 1) {
-                                    NguoiDung account = new NguoiDung();
+                                     account = new NguoiDung();
                                     account.setTendangnhap(jsonObject.getString("tendangnhap"));
                                     account.setHoten((jsonObject.getString("hoten")));
                                     account.setLoaiquyen((jsonObject.getInt("loaiquyen")));
 
 
                                     Intent intentTrangChu = new Intent(DangNhapActivity.this, MainActivity.class);
-                                    intentTrangChu.putExtra("login", account);
+
                                     startActivity(intentTrangChu);
 
                                 } else {

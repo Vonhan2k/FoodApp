@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     ViewFlipper viewBanner;
     Animation enter, exit;
     ImageView imgIconTrangChu, imgIconNhanVien, imgIconQuanLy, imgIconMonAn;
-     NguoiDung account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
         viewBanner.setFlipInterval(3000);
         viewBanner.setAutoStart(true);
 
-        Intent intent = getIntent();
-        account = new NguoiDung();
-        account = (NguoiDung) intent.getSerializableExtra("login");
-
 
         //Su kien click cac imgIcon
         imgIconTrangChu.setOnClickListener(new View.OnClickListener() {
@@ -65,12 +60,10 @@ public class MainActivity extends AppCompatActivity {
         imgIconNhanVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (account.getLoaiquyen() == 0){
-                    Intent intent = new Intent(MainActivity.this, DangNhapActivity.class);
+
+                    Intent intent = new Intent(MainActivity.this, XemGioHang.class);
                     startActivity(intent);
                     overridePendingTransition(0,0);
-                } else
-                    Toast.makeText(MainActivity.this, "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
             }
         });
         imgIconMonAn.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentMonAn);
 
                 Intent intentTrangChu = new Intent(MainActivity.this, LoaiMonAnActivity.class);
-                intentTrangChu.putExtra("login", account);
+                intentTrangChu.putExtra("login", DangNhapActivity.account);
                 startActivity(intentTrangChu);
                 overridePendingTransition(0,0);
             }
@@ -89,8 +82,9 @@ public class MainActivity extends AppCompatActivity {
         imgIconQuanLy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (account.getLoaiquyen() == 0){
+                if (DangNhapActivity.account.getLoaiquyen() == 0){
                     Intent intentQuanLy = new Intent(MainActivity.this, QuanLyMonAnActivity.class);
+                    intentQuanLy.putExtra("login", DangNhapActivity.account);
                     startActivity(intentQuanLy);
                     overridePendingTransition(0,0);
                 } else
@@ -104,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         viewBanner = (ViewFlipper) findViewById(R.id.viewBanner);
         imgIconTrangChu = (ImageView) findViewById(R.id.imageviewIconTrangChu);
         imgIconMonAn = (ImageView) findViewById(R.id.imageviewIconMonAn);
-        imgIconNhanVien = (ImageView) findViewById(R.id.imageviewIconNhanVien);
+        imgIconNhanVien = (ImageView) findViewById(R.id.imageviewIconQuanLyChonMon);
         imgIconQuanLy = (ImageView) findViewById(R.id.imageviewIconQuanLy);
     }
 

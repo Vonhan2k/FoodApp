@@ -127,9 +127,12 @@ public class LoaiMonAnActivity extends AppCompatActivity {
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnQuanLy:
-                    Intent intentQuanLy = new Intent(LoaiMonAnActivity.this, QuanLyMonAnActivity.class);
-                    startActivity(intentQuanLy);
-                    drawerLayout.closeDrawers();
+                    if (DangNhapActivity.account.getLoaiquyen() == 0) {
+                        Intent intentQuanLy = new Intent(LoaiMonAnActivity.this, QuanLyMonAnActivity.class);
+                        startActivity(intentQuanLy);
+                        drawerLayout.closeDrawers();
+                    } else
+                        Toast.makeText(LoaiMonAnActivity.this, "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.btnThoat:
                     AlertDialog.Builder dialogThoat = new AlertDialog.Builder(LoaiMonAnActivity.this,R.style.Theme_Design_Light);

@@ -51,11 +51,13 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
     NavigationView navigationView;
 
 
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan_ly_mon_an);
+
 
         lvMonAn = (ListView) findViewById(R.id.listviewMonAn);
 
@@ -73,9 +75,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                    case R.id.menu_add_mon_an:
                        Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, AddMonAnActivity.class);
                        startActivity(intentQuanLy);
-                   case R.id.menu_view_gio_hang:
-                        Intent intentGioHang = new Intent(QuanLyMonAnActivity.this,XemGioHang.class);
-                        startActivity(intentGioHang);
+
                }
                return false;
            }
@@ -183,6 +183,7 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                 case R.id.btnTrangChu:
                     Intent intentTrangChu = new Intent(QuanLyMonAnActivity.this, MainActivity.class);
                     startActivity(intentTrangChu);
+                    intentTrangChu.putExtra("login", DangNhapActivity.account);
                     drawerLayout.closeDrawers();
                     return true;
                 case R.id.btnThucDon:

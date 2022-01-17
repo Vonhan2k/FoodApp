@@ -160,7 +160,7 @@
                 android:layout_height="@dimen/size_200dp">
 
                 <ImageView
-                    android:id="@+id/imageviewIconNhanVien"
+                    android:id="@+id/imageviewIconQuanLyChonMon"
                     android:layout_marginTop="@dimen/size_25dp"
                     android:layout_marginLeft="@dimen/size_35dp"
                     android:src="@drawable/person"
