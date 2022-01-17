@@ -86,32 +86,11 @@ public class MonAnGioHangAdapter extends BaseAdapter {
 
 
 
-        holder.imgDelete_giohang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                XacNhanXoa(monAn.getTenmon(), monAn.getId());
-            }
-        });
         return view;
 
 
     }
-    public void XacNhanXoa(String tenmon, int id){
-        AlertDialog.Builder dialogXoa = new AlertDialog.Builder(context);
-        dialogXoa.setMessage("Bạn có muốn xóa món ăn " + tenmon + " không!");
-        dialogXoa.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                context.DeleteMonAn(id);
-            }
-        });
-        dialogXoa.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
 
-            }
-        });
-        dialogXoa.show();
-    }
+
 
 }

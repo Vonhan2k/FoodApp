@@ -8,16 +8,14 @@ public class MonAnGioHang implements Serializable {
     public int dongia;
     public int soluong;
     public int thanhtien;
-    public int id;
-    public int mamon;
 
-    public MonAnGioHang(String tenmon, int dongia, int soluong, int thanhtien, int id, int mamon) {
+
+    public MonAnGioHang(String tenmon, int dongia, int soluong, int thanhtien) {
         this.tenmon = tenmon;
         this.dongia = dongia;
         this.soluong = soluong;
         this.thanhtien = thanhtien;
-        this.id = id;
-        this.mamon = mamon;
+
     }
 
     public String getTenmon() {
@@ -52,19 +50,5 @@ public class MonAnGioHang implements Serializable {
         this.thanhtien = thanhtien;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getMamon() {
-        return mamon;
-    }
-
-    public void setMamon(int mamon) {
-        this.mamon = mamon;
-    }
 }

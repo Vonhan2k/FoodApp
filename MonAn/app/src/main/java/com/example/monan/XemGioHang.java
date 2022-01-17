@@ -29,7 +29,7 @@ public class XemGioHang extends AppCompatActivity {
     ArrayList<MonAnGioHang> arrayListMonAnGioHang;
     MonAnGioHangAdapter adapterMonAn;
     String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
-    String urlDelete =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,9 +56,8 @@ public class XemGioHang extends AppCompatActivity {
                                 object.getString("tenmon"),
                                 object.getInt("dongia"),
                                 object.getInt("soluong"),
-                                object.getInt("thanhtien"),
-                                object.getInt("id"),
-                                object.getInt("mamon")
+                                object.getInt("thanhtien")
+
                         ));
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -84,38 +83,9 @@ public class XemGioHang extends AppCompatActivity {
 //                return params;
 //            }
 //        };
-//        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(jsonArrayRequest);
     }
 
 
-    public void DeleteMonAn(final int id){
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlDelete, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (response.trim().equals("success")){
-                    Toast.makeText(XemGioHang.this, "Xóa thành công!", Toast.LENGTH_SHORT).show();
-                    GetData(urlGetData);
-                } else{
-                    Toast.makeText(XemGioHang.this, "Lỗi!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(XemGioHang.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-        ){
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("id", String.valueOf(id));
-                return params;
-            }
-        };
-        requestQueue.add(stringRequest);
-    }
+
 }
