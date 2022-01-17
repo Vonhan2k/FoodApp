@@ -20,6 +20,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="#2196F3"
             app:title="@string/app_name"
+            app:menu="@menu/thong_tin_nguoi_dung"
             android:id="@+id/toolbar">
 
         </androidx.appcompat.widget.Toolbar>
