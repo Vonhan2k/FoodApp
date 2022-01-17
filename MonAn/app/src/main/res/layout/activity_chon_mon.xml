@@ -148,6 +148,7 @@
     <LinearLayout
         android:layout_marginTop="@dimen/size_30dp"
         android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:layout_height="wrap_content">
 
         <Button
@@ -156,8 +157,15 @@
             android:layout_margin="@dimen/size_10dp"
             android:backgroundTint="#AE0A0A"
             android:text="@string/btn_chon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></Button>
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="50dp"></Button>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

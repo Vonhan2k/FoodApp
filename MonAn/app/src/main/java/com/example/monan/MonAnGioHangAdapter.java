@@ -67,6 +67,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
             holder.txtSoLuong = (TextView) view.findViewById(R.id.textviewSoLuong_giohang);
             holder.txtThanhTien = (TextView) view.findViewById(R.id.textviewThanhTien_giohang);
             holder.imgDelete_giohang = (ImageView) view.findViewById(R.id.imageviewDelete_giohang);
+
             view.setTag(holder);
         } else{
             holder = (MonAnGioHangAdapter.ViewHolder) view.getTag();
@@ -86,6 +87,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
         holder.txtThanhTien.setText( "Thành Tiền: "+ en.format(chonMon.getThanhtien()) +" đ");
+
 
         holder.imgDelete_giohang.setOnClickListener(new View.OnClickListener() {
             @Override
