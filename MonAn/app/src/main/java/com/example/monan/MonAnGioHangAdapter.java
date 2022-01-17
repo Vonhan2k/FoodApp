@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -21,18 +22,18 @@ import java.util.Locale;
 public class MonAnGioHangAdapter extends BaseAdapter {
     private XemGioHang context;
     private int layout;
-    private List<MonAnGioHang> monAnList;
+    private List<MonAnGioHang> chonMonList;
 
 
-    public MonAnGioHangAdapter(XemGioHang context, int layout, List<MonAnGioHang> monAnList) {
+    public MonAnGioHangAdapter(XemGioHang context, int layout, List<MonAnGioHang> chonMonList) {
         this.context = context;
         this.layout = layout;
-        this.monAnList = monAnList;
+        this.chonMonList = chonMonList;
     }
 
     @Override
     public int getCount() {
-        return monAnList.size();
+        return chonMonList.size();
     }
 
     @Override
@@ -41,7 +42,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView txtTenMonAn_giohang, txtGia_giohang, txtSoLuong,txtThanhTien;
+        TextView txtTenMonAn_giohang, txtGia_giohang, txtSoLuong,txtThanhTien, txtId;
 
         ImageView imgHinh_giohang, imgDelete_giohang;
     }
@@ -60,6 +61,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(layout, null);
             holder.txtTenMonAn_giohang = (TextView) view.findViewById(R.id.textviewTenMonAnCustom_giohang);
+            holder.txtId = (TextView) view.findViewById(R.id.textviewId_giohang);
             holder.txtGia_giohang = (TextView) view.findViewById(R.id.textviewGiaCustom_giohang);
             holder.txtSoLuong = (TextView) view.findViewById(R.id.textviewSoLuong_giohang);
             holder.txtThanhTien = (TextView) view.findViewById(R.id.textviewThanhTien_giohang);
@@ -69,28 +71,48 @@ public class MonAnGioHangAdapter extends BaseAdapter {
             holder = (MonAnGioHangAdapter.ViewHolder) view.getTag();
         }
 
-        MonAnGioHang monAn = monAnList.get(i);
+        MonAnGioHang chonMon = chonMonList.get(i);
 
 
-        holder.txtTenMonAn_giohang.setText("Tên món:" + monAn.getTenmon());
-        holder.txtGia_giohang.setText("Giá:" + monAn.getDongia());
-        holder.txtSoLuong.setText("Số Lượng:" +monAn.getSoluong() +"");
+        holder.txtTenMonAn_giohang.setText("Tên món:" + chonMon.getTenmon());
+        holder.txtId.setText("ID:" + chonMon.getId());
+        holder.txtGia_giohang.setText("Giá:" + chonMon.getDongia());
+        holder.txtSoLuong.setText("Số Lượng:" +chonMon.getSoluong() +"");
         // tạo 1 NumberFormat để định dạng số theo tiêu chuẩn của nước Anh
         Locale localeEN = new Locale("en", "EN");
         NumberFormat en = NumberFormat.getInstance(localeEN);
 
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
-        holder.txtThanhTien.setText( "Thành Tiền: "+ en.format(monAn.getThanhtien()) +" đ");
-//        Picasso.get().load(monAn.getHinhAnh()).into(holder.imgHinh);
+        holder.txtThanhTien.setText( "Thành Tiền: "+ en.format(chonMon.getThanhtien()) +" đ");
 
-
+        holder.imgDelete_giohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                XacNhanXoa(chonMon.getTenmon(), chonMon.getId());
+            }
+        });
 
         return view;
-
-
     }
+    public void XacNhanXoa(String ten, int id){
+        AlertDialog.Builder dialogXoa = new AlertDialog.Builder(context);
+        dialogXoa.setMessage("Bạn có muốn xóa đơn số " +ten + " không!");
+        dialogXoa.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
+                context.DeleteChonMon(id);
+            }
+        });
+        dialogXoa.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        dialogXoa.show();
+    }
 
 
 }

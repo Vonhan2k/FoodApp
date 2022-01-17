@@ -62,8 +62,8 @@ public class AddMonAnActivity extends AppCompatActivity {
 
 
 
-    String urlGetData = " http://192.168.1.9/food-menu-vhnhan/json/loaimon/getdata.php";
-    String urlInsert = " http://192.168.1.9/food-menu-vhnhan/json/monan/insert.php";
+    String urlGetData = " http://192.168.1.2/food-menu-vhnhan/json/loaimon/getdata.php";
+    String urlInsert = " http://192.168.1.2/food-menu-vhnhan/json/monan/insert.php";
 
 
 

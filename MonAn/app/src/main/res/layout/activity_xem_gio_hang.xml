@@ -20,6 +20,7 @@
         android:text="Giỏ Hàng" />
 
     <ListView
+        android:layout_marginTop="@dimen/size_15dp"
         android:id="@+id/listviewGioHang"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
