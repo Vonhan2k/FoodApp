@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class XemGioHang extends AppCompatActivity {
-    ListView lvdanhsachmongiohang;
+    static ListView lvdanhsachmongiohang;
     ArrayList<MonAnGioHang> arrayListMonAnGioHang;
     MonAnGioHangAdapter adapterMonAn;
     String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
