@@ -38,11 +38,11 @@ import java.util.Map;
 
 public class QuanLyMonAnActivity extends AppCompatActivity {
 
-     String urlGetData = " http://192.168.1.3/food-menu-vhnhan/json/monan/getdata.php";
-     String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/monan/delete.php";
+//     String urlGetData = " http://192.168.1.3/food-menu-vhnhan/json/monan/getdata.php";
+//     String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/monan/delete.php";
 
-//    String urlGetData = " http://192.168.1.6/food-menu-vhnhan/json/monan/getdata.php";
-//    String urlDelete = "http://192.168.1.6/food-menu-vhnhan/json/monan/delete.php";
+    String urlGetData = " http://192.168.1.11/food-menu-vhnhan/json/monan/getdata.php";
+    String urlDelete = "http://192.168.1.11/food-menu-vhnhan/json/monan/delete.php";
 
     /*String urlGetData = "http://food-menu-vhnhan.herokuapp.com/json/monan/getdata.php";
     String urlDelete = "http://food-menu-vhnhan.herokuapp.com/json/monan/delete.php";*/
@@ -203,25 +203,6 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                 case R.id.btnQuanLy:
                     Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intentQuanLy);
-                    drawerLayout.closeDrawers();
-                    return true;
-                case R.id.btnThoat:
-                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(QuanLyMonAnActivity.this,R.style.Theme_Design_Light);
-                    dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
-                    dialogThoat.setMessage("Bạn có chắc chắn?");
-                    dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            onBackPressed();
-                        }
-                    });
-                    dialogThoat.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    });
-                    dialogThoat.show();
                     drawerLayout.closeDrawers();
                     return true;
             }

@@ -32,9 +32,9 @@ import java.util.Map;
 
 public class DangNhapActivity extends AppCompatActivity {
 
-   String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/nguoidung/dangnhap.php";
+   /* String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/nguoidung/dangnhap.php";*/
 
-//    String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/nguoidung/dangnhap.php";
+    String urlGetData =  "http://192.168.1.11/food-menu-vhnhan/json/nguoidung/dangnhap.php";
 
     Button btnDongYDN;
     EditText edit_TenDangNhapDN,edit_MatKhauDN;
@@ -85,6 +85,8 @@ public class DangNhapActivity extends AppCompatActivity {
                                     account.setTendangnhap(jsonObject.getString("tendangnhap"));
                                     account.setHoten((jsonObject.getString("hoten")));
                                     account.setLoaiquyen((jsonObject.getInt("loaiquyen")));
+
+
 
 
                                     Intent intentTrangChu = new Intent(DangNhapActivity.this, MainActivity.class);
