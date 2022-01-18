@@ -45,11 +45,11 @@ public class XemGioHang extends AppCompatActivity {
     MonAnGioHangAdapter adapterMonAn;
 
 
-   String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
-    String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";
+   /* String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
+    String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";*/
 
-//    String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/datmon/getdata.php";
-//    String urlDelete = "http://192.168.1.6/food-menu-vhnhan/json/datmon/delete.php";
+    String urlGetData =  "http://192.168.1.11/food-menu-vhnhan/json/datmon/getdata.php";
+    String urlDelete = "http://192.168.1.11/food-menu-vhnhan/json/datmon/delete.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,25 +173,7 @@ public class XemGioHang extends AppCompatActivity {
                     startActivity(intentQuanLy);
                     drawerLayout.closeDrawers();
                     return true;
-                case R.id.btnThoat:
-                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(XemGioHang.this,R.style.Theme_Design_Light);
-                    dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
-                    dialogThoat.setMessage("Bạn có chắc chắn?");
-                    dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            onBackPressed();
-                        }
-                    });
-                    dialogThoat.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                        }
-                    });
-                    dialogThoat.show();
-                    drawerLayout.closeDrawers();
-                    return true;
             }
             return false;
         }

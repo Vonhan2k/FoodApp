@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:title="@string/xemgiohang"
     android:id="@+id/menu_view_gio_hang"
-    android:icon="@android:drawable/ic_menu_view"
+    android:icon="@drawable/person"
     app:showAsAction="always">
+
+        <menu>
+            <item android:title="Thông tin cá nhân"
+                android:id="@+id/Thongtin"></item>
+            <item android:title="Đăng xuất"
+                android:id="@+id/DangXuat"/>
+            <item android:title="Thoát"
+                android:id="@+id/Thoat"/>
+        </menu>
+
     </item>
 </menu>

@@ -45,8 +45,8 @@ public class LoaiMonAnActivity extends AppCompatActivity {
 
 
     //String url = "http://food-menu-vhnhan.herokuapp.com/json/loaimon/getdata.php";
-    String url = "http://192.168.1.3/food-menu-vhnhan/json/loaimon/getdata.php";
-//    String url = "http://192.168.1.6/food-menu-vhnhan/json/loaimon/getdata.php";
+    //String url = "http://192.168.1.3/food-menu-vhnhan/json/loaimon/getdata.php";
+    String url = "http://192.168.1.11/food-menu-vhnhan/json/loaimon/getdata.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,27 +139,6 @@ public class LoaiMonAnActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                     } else
                         Toast.makeText(LoaiMonAnActivity.this, "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.btnThoat:
-                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(LoaiMonAnActivity.this,R.style.Theme_Design_Light);
-                    dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
-                    dialogThoat.setMessage("Bạn có chắc chắn?");
-                    dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            onBackPressed();
-                            Intent intent = new Intent(LoaiMonAnActivity.this,MainActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                    dialogThoat.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    });
-                    dialogThoat.show();
-                    drawerLayout.closeDrawers();
                     return true;
             }
             return false;

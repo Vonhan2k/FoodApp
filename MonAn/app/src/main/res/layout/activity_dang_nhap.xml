@@ -5,6 +5,14 @@
     android:background="@color/green_daquang"
     >
 
+    <ImageView
+        android:src="@drawable/person_cook"
+        android:layout_width="@dimen/size_150dp"
+        android:layout_height="@dimen/size_150dp"
+        android:layout_centerVertical="@+id/lnKhungDangNhap"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/size_80dp" />
+
     <TextView
         android:textColor="#AE1010"
         android:layout_width="wrap_content"
@@ -16,12 +24,7 @@
         android:textSize="@dimen/size_30sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:layout_width="@dimen/size_150dp"
-        android:layout_height="@dimen/size_150dp"
-        android:layout_alignRight="@+id/lnKhungDangNhap"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/size_80dp" />
+
 
     <LinearLayout
         android:layout_marginTop="@dimen/size_20dp"

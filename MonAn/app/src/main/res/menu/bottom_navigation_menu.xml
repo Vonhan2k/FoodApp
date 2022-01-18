@@ -22,10 +22,6 @@
         android:enabled="true"
         android:icon="@drawable/employee"
         android:title="@string/ibtn_quanly"/>
-    <item
-        android:id="@+id/btnThoat"
-        android:enabled="true"
-        android:icon="@drawable/exit_ct"
-        android:title="@string/btn_thoat"/>
+
 
 </menu>

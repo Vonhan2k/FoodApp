@@ -47,7 +47,7 @@ public class ThanhToanActivity extends AppCompatActivity {
         //Hiển thị toolBar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Thực đơn");
+        getSupportActionBar().setTitle("Thanh toán");
         //Click trở về trang trước
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

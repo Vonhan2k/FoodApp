@@ -82,37 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent">
 
-                <LinearLayout
 
-                android:orientation="vertical"
-                android:layout_marginLeft="@dimen/size_25dp"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/custom_layout"
-                android:layout_marginTop="@dimen/size_20dp"
-                android:layout_width="@dimen/size_200dp"
-                android:layout_height="@dimen/size_200dp">
-
-                <ImageView
-                    android:layout_marginTop="@dimen/size_20dp"
-                    android:id="@+id/imageviewInfoApp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/bill_50"
-                    android:layout_width="@dimen/size_125dp"
-                    android:layout_height="@dimen/size_125dp">
-                </ImageView>
-
-                <TextView
-                    android:layout_marginTop="@dimen/size_5dp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/size_20sp"
-                    android:text="Thông Tin Ứng Dụng"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </TextView>
-
-            </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
@@ -143,14 +113,6 @@
                     android:layout_height="wrap_content">
                 </TextView>
             </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
-
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_marginLeft="@dimen/size_25dp"
@@ -164,7 +126,7 @@
                     android:id="@+id/imageviewDatMon"
                     android:layout_marginTop="@dimen/size_25dp"
                     android:layout_marginLeft="@dimen/size_35dp"
-                    android:src="@drawable/person"
+                    android:src="@drawable/bill_50"
                     android:layout_width="@dimen/size_125dp"
                     android:layout_height="@dimen/size_125dp">
                 </ImageView>
@@ -181,6 +143,17 @@
                 </TextView>
 
             </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+
+
 
             <LinearLayout
                 android:orientation="vertical"
@@ -207,6 +180,38 @@
                     android:textStyle="bold"
                     android:textSize="@dimen/size_20sp"
                     android:text="@string/ibtn_quanly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/size_25dp"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/custom_layout"
+                android:layout_marginTop="@dimen/size_20dp"
+                android:layout_width="@dimen/size_200dp"
+                android:layout_height="@dimen/size_200dp">
+
+                <ImageView
+                    android:layout_marginTop="@dimen/size_20dp"
+                    android:id="@+id/imageviewInfoApp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/info_64"
+                    android:layout_width="@dimen/size_125dp"
+                    android:layout_height="@dimen/size_125dp">
+                </ImageView>
+
+                <TextView
+                    android:layout_marginTop="@dimen/size_5dp"
+                    android:layout_gravity="center"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/size_20sp"
+                    android:text="Thông Tin Ứng Dụng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
