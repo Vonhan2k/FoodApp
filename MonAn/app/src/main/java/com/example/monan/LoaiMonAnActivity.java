@@ -127,6 +127,11 @@ public class LoaiMonAnActivity extends AppCompatActivity {
                     startActivity(intentThucDon);
                     drawerLayout.closeDrawers();
                     return true;
+                case R.id.btnDanhSach:
+                    Intent intentDanhSach = new Intent(LoaiMonAnActivity.this, XemGioHang.class);
+                    startActivity(intentDanhSach);
+                    drawerLayout.closeDrawers();
+                    return true;
                 case R.id.btnQuanLy:
                     if (DangNhapActivity.account.getLoaiquyen() == 0) {
                         Intent intentQuanLy = new Intent(LoaiMonAnActivity.this, QuanLyMonAnActivity.class);

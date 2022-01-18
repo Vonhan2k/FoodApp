@@ -1,6 +1,8 @@
 package com.example.monan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -24,6 +28,8 @@ public class ThanhToanActivity extends AppCompatActivity {
     TextView txtSoHD, txtNgayLapHD, txtTenMonAn, txtSoLuong, txtGia, txtTongTien, txtSoTienTra, txtTienTraLaiKhach, txtSoBan;
     EditText edtSoTienDua;
     Button btnXong, btnCapNhat;
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
     String sotiendua = "";
     int tiendua;
     int tientra = 0;
@@ -34,6 +40,21 @@ public class ThanhToanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_thanh_toan);
 
         AnhXa();
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        toolbar = (Toolbar) findViewById(R.id.toolbarThanhToan);
+
+        //Hiển thị toolBar
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Thực đơn");
+        //Click trở về trang trước
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         Intent intent = getIntent();
         MonAnGioHang monAnGioHang = (MonAnGioHang) intent.getSerializableExtra("data");

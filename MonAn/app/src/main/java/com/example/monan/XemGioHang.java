@@ -1,9 +1,17 @@
 package com.example.monan;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,9 +36,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class XemGioHang extends AppCompatActivity {
+
+    Toolbar toolbar;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
     static ListView lvdanhsachmongiohang;
     ArrayList<MonAnGioHang> arrayListMonAnGioHang;
     MonAnGioHangAdapter adapterMonAn;
+
+
    /* String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
     String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";*/
 
@@ -40,7 +55,11 @@ public class XemGioHang extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xem_gio_hang);
+
         lvdanhsachmongiohang = (ListView) findViewById(R.id.listviewGioHang);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         arrayListMonAnGioHang = new ArrayList<MonAnGioHang>();
         adapterMonAn = new MonAnGioHangAdapter(XemGioHang.this, R.layout.dong_mon_gio_hang, arrayListMonAnGioHang);
@@ -48,9 +67,15 @@ public class XemGioHang extends AppCompatActivity {
 
         GetData(urlGetData);
 
-
-
-
+        toolbar.setNavigationIcon(R.drawable.ic_action_menu);
+        toolbar.setTitle("Quản lý");
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+                navigationView.setNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            }
+        });
 
     }
     private void GetData(String url){
@@ -69,7 +94,8 @@ public class XemGioHang extends AppCompatActivity {
                                 object.getInt("soluong"),
                                 object.getInt("thanhtien"),
                                 object.getInt("id"),
-                                object.getInt("maban")
+                                object.getInt("maban"),
+                                object.getInt("monan_id")
 
                         ));
                     } catch (JSONException e) {
@@ -119,5 +145,56 @@ public class XemGioHang extends AppCompatActivity {
         };
         requestQueue.add(stringRequest);
     }
+
+    private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new NavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.btnTrangChu:
+                    Intent intentTrangChu = new Intent(XemGioHang.this, MainActivity.class);
+                    startActivity(intentTrangChu);
+                    intentTrangChu.putExtra("login", DangNhapActivity.account);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnThucDon:
+                    Intent intentThucDon = new Intent(XemGioHang.this, LoaiMonAnActivity.class);
+                    startActivity(intentThucDon);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnDanhSach:
+                    Intent intentDanhSach = new Intent(XemGioHang.this, XemGioHang.class);
+                    startActivity(intentDanhSach);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnQuanLy:
+                    Intent intentQuanLy = new Intent(XemGioHang.this, QuanLyMonAnActivity.class);
+                    startActivity(intentQuanLy);
+                    drawerLayout.closeDrawers();
+                    return true;
+                case R.id.btnThoat:
+                    AlertDialog.Builder dialogThoat = new AlertDialog.Builder(XemGioHang.this,R.style.Theme_Design_Light);
+                    dialogThoat.setTitle("Bạn muốn thoát khỏi ứng dụng");
+                    dialogThoat.setMessage("Bạn có chắc chắn?");
+                    dialogThoat.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            onBackPressed();
+                        }
+                    });
+                    dialogThoat.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    dialogThoat.show();
+                    drawerLayout.closeDrawers();
+                    return true;
+            }
+            return false;
+        }
+    };
 
 }

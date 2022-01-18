@@ -45,7 +45,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
     private class ViewHolder{
         TextView txtTenMonAn_giohang, txtTenBan,txtThanhTien, txtId;
 
-        ImageView imgHinh_giohang, imgDelete_giohang;
+        ImageView imgSua_giohang, imgDelete_giohang;
     }
 
     @Override
@@ -65,6 +65,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
             holder.txtId = (TextView) view.findViewById(R.id.textviewId_giohang);
             holder.txtTenBan = (TextView) view.findViewById(R.id.textviewTenBanCustom_giohang);
             holder.txtThanhTien = (TextView) view.findViewById(R.id.textviewThanhTien_giohang);
+            holder.imgSua_giohang = (ImageView) view.findViewById(R.id.imageviewSua_giohang);
             holder.imgDelete_giohang = (ImageView) view.findViewById(R.id.imageviewDelete_giohang);
 
             view.setTag(holder);
@@ -86,6 +87,14 @@ public class MonAnGioHangAdapter extends BaseAdapter {
         // thì phần ngàn của số được phân cách bằng dấu phẩy
         holder.txtThanhTien.setText( "Thành Tiền: "+ en.format(chonMon.getThanhtien()) +"đ");
 
+        holder.imgSua_giohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, SuaChonMonActivity.class);
+                intent.putExtra("dataMonAn", chonMon);
+                context.startActivity(intent);
+            }
+        });
 
         holder.imgDelete_giohang.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,13 +9,11 @@
         android:id="@+id/textviewId_giohang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginLeft="@dimen/size_10dp"
         android:layout_marginTop="@dimen/size_10dp"
         android:layout_marginRight="@dimen/size_10dp"
         android:text="ID"
         android:textColor="#0d00ff"
-
         android:textSize="@dimen/size_24sp"
         android:textStyle="bold"></TextView>
 
@@ -62,20 +60,15 @@
     android:textSize="@dimen/size_24sp"
     android:textStyle="bold"></TextView>
 
-<!--    <TextView
-        android:id="@+id/textviewTenBan_giohang"
+
+    <ImageView
+        android:id="@+id/imageviewSua_giohang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textviewThanhTien_giohang"
-        android:layout_marginLeft="@dimen/size_10dp"
-        android:layout_marginTop="@dimen/size_10dp"
+        android:layout_marginTop="@dimen/size_15dp"
         android:layout_marginRight="@dimen/size_10dp"
-
-        android:text="Tên Bàn"
-        android:textColor="#539308"
-        android:textSize="@dimen/size_24sp"
-        android:textStyle="bold"></TextView>-->
-
+        android:layout_toLeftOf="@+id/imageviewDelete_giohang"
+        android:src="@android:drawable/ic_menu_edit"></ImageView>
 
     <ImageView
         android:id="@+id/imageviewDelete_giohang"

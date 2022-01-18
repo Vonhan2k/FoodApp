@@ -10,7 +10,7 @@ public class MonAnGioHang implements Serializable {
     public int thanhtien;
     public int id;
     public int maban;
-
+    public int mamon;
 
 
     public MonAnGioHang() {
@@ -23,6 +23,24 @@ public class MonAnGioHang implements Serializable {
         this.thanhtien = thanhtien;
         this.id = id;
         this.maban = maban;
+    }
+
+    public MonAnGioHang(String tenmon, int dongia, int soluong, int thanhtien, int id, int maban, int mamon) {
+        this.tenmon = tenmon;
+        this.dongia = dongia;
+        this.soluong = soluong;
+        this.thanhtien = thanhtien;
+        this.id = id;
+        this.maban = maban;
+        this.mamon = mamon;
+    }
+
+    public int getMamon() {
+        return mamon;
+    }
+
+    public void setMamon(int mamon) {
+        this.mamon = mamon;
     }
 
     public int getMaban() {

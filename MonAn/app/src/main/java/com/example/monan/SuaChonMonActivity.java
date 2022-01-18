@@ -37,7 +37,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class ChonMonActivity extends AppCompatActivity {
+public class SuaChonMonActivity extends AppCompatActivity {
+
 
     ImageView imgHinh;
     TextView txtTenMonAn, txtGia, txtSoLuong, txtTongTien;
@@ -47,44 +48,49 @@ public class ChonMonActivity extends AppCompatActivity {
     Spinner spinner_banAn;
     int soluong = 1;
     int tongtien, dongia = 0;
+    int id = 0;
     int mamon = 0;
     int vitri = 1;
-    public static MonAn monAn;
 
     ArrayList<BanAn> arrayBanAn;
     ArrayList<String> names = new ArrayList<String>();
-   /* String urlInsert = " http://192.168.1.3/food-menu-vhnhan/json/datmon/insert.php";
-    String urlgetData_BanAn = "http://192.168.1.3/food-menu-vhnhan/json/banan/getdata.php";*/
 
-    String urlInsert = " http://192.168.1.6/food-menu-vhnhan/json/datmon/insert.php";
+    String urlUpdate = " http://192.168.1.6/food-menu-vhnhan/json/datmon/update.php";
     String urlgetData_BanAn = "http://192.168.1.6/food-menu-vhnhan/json/banan/getdata.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chon_mon);
+        setContentView(R.layout.activity_sua_chon_mon);
+
         spinner_banAn = (Spinner) findViewById(R.id.spinner);
         AnhXa();
 
         Intent intent = getIntent();
-         monAn = (MonAn) intent.getSerializableExtra("dataMonAn");
+        MonAnGioHang monAnGioHang = (MonAnGioHang) intent.getSerializableExtra("dataMonAn");
 
 
-        mamon = monAn.getMaMon();
-        txtTenMonAn.setText(monAn.getTenMon());
+        id = monAnGioHang.getId();
+        mamon = monAnGioHang.getMamon();
+
+
+        txtTenMonAn.setText(monAnGioHang.getTenmon());
         // tạo 1 NumberFormat để định dạng số theo tiêu chuẩn của nước Anh
         Locale localeEN = new Locale("en", "EN");
         NumberFormat en = NumberFormat.getInstance(localeEN);
 
+        txtSoLuong.setText(monAnGioHang.getSoluong()+"");
 
+        String soluong1 = txtSoLuong.getText().toString();
+        soluong = Integer.valueOf(soluong1);
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
-        txtGia.setText( en.format(monAn.getGia())+" đ");
-        Picasso.get().load(monAn.getHinhAnh()).into(imgHinh);
-        txtTongTien.setText(en.format(monAn.getGia())+" đ");
+        txtGia.setText( en.format(monAnGioHang.getDongia())+" đ");
+       // Picasso.get().load(ChonMonActivity.monAn.getHinhAnh()).into(imgHinh);
+        txtTongTien.setText(en.format(monAnGioHang.getThanhtien())+" đ");
 
-        tongtien = monAn.getGia();
-        dongia = monAn.getGia();
+        tongtien = monAnGioHang.getThanhtien();
+        dongia = monAnGioHang.getDongia();
 
         setSupportActionBar(toolbar);
 
@@ -135,8 +141,7 @@ public class ChonMonActivity extends AppCompatActivity {
         btnChonMon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ThemChonMon(urlInsert);
-                //Toast.makeText(ChonMonActivity.this,spinner_banAn.getSelectedItem()+"",Toast.LENGTH_LONG).show();
+                CapNhatMonAn(urlUpdate);
             }
 
         });
@@ -152,11 +157,8 @@ public class ChonMonActivity extends AppCompatActivity {
             }
         });
 
-
         GetData(urlgetData_BanAn);
     }
-
-    // getdata bàn ăn
 
     private void GetData(String url){
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -182,7 +184,7 @@ public class ChonMonActivity extends AppCompatActivity {
                 for (int i = 0; i < arrayBanAn.size(); i++){
                     names.add(arrayBanAn.get(i).getTenban().toString());
                 }
-                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(ChonMonActivity.this, R.layout.spinner, names);
+                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(SuaChonMonActivity.this, R.layout.spinner, names);
                 spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice); // The drop down view
                 spinner_banAn.setAdapter(spinnerArrayAdapter);
             }
@@ -190,56 +192,46 @@ public class ChonMonActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ChonMonActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SuaChonMonActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
         requestQueue.add(jsonArrayRequest);
     }
 
-
-
-
-
-    // kết thức getdata bàn ăn
-
-
-
-    private void ThemChonMon(String url){
-
+    private void CapNhatMonAn(String url){
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if (response.trim().equals("success")){
-                    Toast.makeText(ChonMonActivity.this, "Chọn món thành công!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ChonMonActivity.this, LoaiMonAnActivity.class);
+                    Toast.makeText(SuaChonMonActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(SuaChonMonActivity.this, XemGioHang.class);
                     startActivity(intent);
                 } else{
-                    Toast.makeText(ChonMonActivity.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SuaChonMonActivity.this, "Lỗi!", Toast.LENGTH_SHORT).show();
                 }
             }
         },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(SuaChonMonActivity.this, "Xảy ra lỗi!", Toast.LENGTH_SHORT).show();
                     }
                 }){
-
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
+                params.put("id",id+"");
                 params.put("monan_id",mamon+"");
                 params.put("dongia", dongia+"");
                 params.put("soluong",txtSoLuong.getText().toString().trim());
                 params.put("thanhtien", tongtien+"");
                 params.put("maban", vitri+"");
-
                 return params;
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(stringRequest);
     }
 

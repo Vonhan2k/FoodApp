@@ -195,6 +195,11 @@ public class QuanLyMonAnActivity extends AppCompatActivity {
                     startActivity(intentThucDon);
                     drawerLayout.closeDrawers();
                     return true;
+                case R.id.btnDanhSach:
+                    Intent intentDanhSach = new Intent(QuanLyMonAnActivity.this, XemGioHang.class);
+                    startActivity(intentDanhSach);
+                    drawerLayout.closeDrawers();
+                    return true;
                 case R.id.btnQuanLy:
                     Intent intentQuanLy = new Intent(QuanLyMonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intentQuanLy);

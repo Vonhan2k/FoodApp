@@ -152,6 +152,11 @@ public class MonAnActivity extends AppCompatActivity {
                     startActivity(intentThucDon);
                     drawerLayout.closeDrawers();
                     return true;
+                case R.id.btnDanhSach:
+                    Intent intentDanhSach = new Intent(MonAnActivity.this, XemGioHang.class);
+                    startActivity(intentDanhSach);
+                    drawerLayout.closeDrawers();
+                    return true;
                 case R.id.btnQuanLy:
                     Intent intentQuanLy = new Intent(MonAnActivity.this, QuanLyMonAnActivity.class);
                     startActivity(intentQuanLy);
