@@ -48,11 +48,15 @@ public class ChonMonActivity extends AppCompatActivity {
     int soluong = 1;
     int tongtien, dongia = 0;
     int mamon = 0;
+    int vitri = 1;
 
     ArrayList<BanAn> arrayBanAn;
     ArrayList<String> names = new ArrayList<String>();
-    String urlInsert = " http://192.168.1.3/food-menu-vhnhan/json/datmon/insert.php";
-    String urlgetData_BanAn = "http://192.168.1.3/food-menu-vhnhan/json/banan/getdata.php";
+   /* String urlInsert = " http://192.168.1.3/food-menu-vhnhan/json/datmon/insert.php";
+    String urlgetData_BanAn = "http://192.168.1.3/food-menu-vhnhan/json/banan/getdata.php";*/
+
+    String urlInsert = " http://192.168.1.6/food-menu-vhnhan/json/datmon/insert.php";
+    String urlgetData_BanAn = "http://192.168.1.6/food-menu-vhnhan/json/banan/getdata.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,17 +138,17 @@ public class ChonMonActivity extends AppCompatActivity {
             }
 
         });
-//        spinner_banAn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                Toast.makeText(ChonMonActivity.this,spinner_banAn.getSelectedItem()+"",Toast.LENGTH_LONG).show();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
+        spinner_banAn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                vitri = position + 1;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         GetData(urlgetData_BanAn);
@@ -176,8 +180,8 @@ public class ChonMonActivity extends AppCompatActivity {
                 for (int i = 0; i < arrayBanAn.size(); i++){
                     names.add(arrayBanAn.get(i).getTenban().toString());
                 }
-                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(ChonMonActivity.this, android.R.layout.simple_spinner_item, names);
-                spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+                ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(ChonMonActivity.this, R.layout.spinner, names);
+                spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice); // The drop down view
                 spinner_banAn.setAdapter(spinnerArrayAdapter);
             }
         },
@@ -228,6 +232,7 @@ public class ChonMonActivity extends AppCompatActivity {
                 params.put("dongia", dongia+"");
                 params.put("soluong",txtSoLuong.getText().toString().trim());
                 params.put("thanhtien", tongtien+"");
+                params.put("maban", vitri+"");
 
                 return params;
             }

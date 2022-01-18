@@ -30,8 +30,12 @@ public class XemGioHang extends AppCompatActivity {
     static ListView lvdanhsachmongiohang;
     ArrayList<MonAnGioHang> arrayListMonAnGioHang;
     MonAnGioHangAdapter adapterMonAn;
-    String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
-    String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";
+   /* String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
+    String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";*/
+
+    String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/datmon/getdata.php";
+    String urlDelete = "http://192.168.1.6/food-menu-vhnhan/json/datmon/delete.php";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +68,8 @@ public class XemGioHang extends AppCompatActivity {
                                 object.getInt("dongia"),
                                 object.getInt("soluong"),
                                 object.getInt("thanhtien"),
-                                object.getInt("id")
+                                object.getInt("id"),
+                                object.getInt("maban")
 
                         ));
                     } catch (JSONException e) {

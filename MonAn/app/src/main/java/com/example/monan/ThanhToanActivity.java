@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,11 +21,12 @@ import java.util.Locale;
 
 public class ThanhToanActivity extends AppCompatActivity {
 
-    TextView txtSoHD, txtNgayLapHD, txtTenMonAn, txtSoLuong, txtGia, txtTongTien, txtSoTienTra, txtTienTraLaiKhach;
+    TextView txtSoHD, txtNgayLapHD, txtTenMonAn, txtSoLuong, txtGia, txtTongTien, txtSoTienTra, txtTienTraLaiKhach, txtSoBan;
     EditText edtSoTienDua;
     Button btnXong, btnCapNhat;
-    String sotiendua = "15000";
-    int Sotiendua;
+    String sotiendua = "";
+    int tiendua;
+    int tientra = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,9 @@ public class ThanhToanActivity extends AppCompatActivity {
         Intent intent = getIntent();
         MonAnGioHang monAnGioHang = (MonAnGioHang) intent.getSerializableExtra("data");
 
-        txtSoHD.setText("000"+monAnGioHang.getId()+"");
+
+        txtSoHD.setText(" 000"+monAnGioHang.getId()+"");
+        txtSoBan.setText(" "+monAnGioHang.getMaban()+"");
 
         txtTenMonAn.setText(monAnGioHang.getTenmon());
 
@@ -55,19 +60,27 @@ public class ThanhToanActivity extends AppCompatActivity {
         txtTongTien.setText(en.format(monAnGioHang.getThanhtien())+"");
         txtSoTienTra.setText(en.format(monAnGioHang.getThanhtien())+"");
 
+        edtSoTienDua.setText(monAnGioHang.getThanhtien()+"");
+
+        edtSoTienDua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtSoTienDua.setText("");
+            }
+        });
 
         btnCapNhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 sotiendua = edtSoTienDua.getText().toString();
+                sotiendua = edtSoTienDua.getText().toString();
 
                 if ( sotiendua.equals("")){
                     Toast.makeText(ThanhToanActivity.this, "Vui lòng nhập số tiền", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                        int tiendua = Integer.parseInt(sotiendua);
-                    txtTienTraLaiKhach.setText(en.format(tiendua - monAnGioHang.getThanhtien()));
-                    Toast.makeText(ThanhToanActivity.this,  sotiendua+"", Toast.LENGTH_SHORT).show();
+                     tiendua = Integer.parseInt(sotiendua);
+                     tientra = tiendua - monAnGioHang.getThanhtien();
+                    txtTienTraLaiKhach.setText(en.format(tientra));
                 }
             }
         });
@@ -75,14 +88,24 @@ public class ThanhToanActivity extends AppCompatActivity {
         btnXong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ThanhToanActivity.this, "Đã thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                if (tientra < 0){
+                    Toast.makeText(ThanhToanActivity.this,"Số tiền không hợp lệ! Vui lòng nhập lại!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(ThanhToanActivity.this, "Đã thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                    finish();
+
+                }
+
             }
         });
 
     }
 
+
     private void AnhXa(){
         txtSoHD = (TextView) findViewById(R.id.txtSoHoaDon_ThanhToan);
+        txtSoBan = (TextView) findViewById(R.id.txtSoBan);
         txtNgayLapHD = (TextView) findViewById(R.id.txtNgayLapHD);
         txtTenMonAn = (TextView) findViewById(R.id.txtTenMonAn_ThanhToan);
         txtSoLuong = (TextView) findViewById(R.id.txtSoLuong_ThanhToan);

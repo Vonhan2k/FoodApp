@@ -6,61 +6,53 @@
 
 
     <TextView
-        android:id="@+id/textviewTenMonAnCustom_giohang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/size_10dp"
-        android:layout_marginRight="@dimen/size_10dp"
-        android:text="@string/tenmonan"
-        android:textColor="#0d00ff"
-        android:textSize="@dimen/size_24sp"
-        android:textStyle="bold"></TextView>
-
-    <TextView
         android:id="@+id/textviewId_giohang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textviewTenMonAnCustom_giohang"
+
         android:layout_marginLeft="@dimen/size_10dp"
         android:layout_marginTop="@dimen/size_10dp"
         android:layout_marginRight="@dimen/size_10dp"
-        android:text="ID "
-        android:textColor="#539308"
+        android:text="ID"
+        android:textColor="#0d00ff"
+
         android:textSize="@dimen/size_24sp"
         android:textStyle="bold"></TextView>
 
     <TextView
-        android:id="@+id/textviewGiaCustom_giohang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@id/textviewId_giohang"
-        android:layout_marginLeft="@dimen/size_10dp"
-        android:layout_marginTop="@dimen/size_10dp"
-        android:layout_marginRight="@dimen/size_10dp"
-        android:text="Đơn Giá "
-        android:textColor="#539308"
-        android:textSize="@dimen/size_24sp"
-        android:textStyle="bold"></TextView>
-
-    <TextView
-        android:id="@+id/textviewSoLuong_giohang"
+        android:id="@+id/textviewTenBanCustom_giohang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textviewGiaCustom_giohang"
         android:layout_marginLeft="@dimen/size_10dp"
-        android:layout_marginTop="@dimen/size_10dp"
         android:layout_marginRight="@dimen/size_10dp"
-
-        android:text="Số Lượng"
+        android:text="Bàn "
         android:textColor="#539308"
         android:textSize="@dimen/size_24sp"
         android:textStyle="bold"></TextView>
+
+
+
+    <TextView
+        android:id="@+id/textviewTenMonAnCustom_giohang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textviewTenBanCustom_giohang"
+        android:layout_marginLeft="@dimen/size_10dp"
+        android:layout_marginTop="@dimen/size_10dp"
+        android:layout_marginRight="@dimen/size_10dp"
+        android:text="Món Ăn "
+        android:textColor="#539308"
+        android:textSize="@dimen/size_24sp"
+        android:textStyle="bold"></TextView>
+
+
 
     <TextView
     android:id="@+id/textviewThanhTien_giohang"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_below="@id/textviewSoLuong_giohang"
+    android:layout_below="@id/textviewTenMonAnCustom_giohang"
     android:layout_marginLeft="@dimen/size_10dp"
     android:layout_marginTop="@dimen/size_10dp"
     android:layout_marginRight="@dimen/size_10dp"

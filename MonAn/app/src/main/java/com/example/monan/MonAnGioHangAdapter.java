@@ -43,7 +43,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
     }
 
     private class ViewHolder{
-        TextView txtTenMonAn_giohang, txtGia_giohang, txtSoLuong,txtThanhTien, txtId;
+        TextView txtTenMonAn_giohang, txtTenBan,txtThanhTien, txtId;
 
         ImageView imgHinh_giohang, imgDelete_giohang;
     }
@@ -63,8 +63,7 @@ public class MonAnGioHangAdapter extends BaseAdapter {
             view = inflater.inflate(layout, null);
             holder.txtTenMonAn_giohang = (TextView) view.findViewById(R.id.textviewTenMonAnCustom_giohang);
             holder.txtId = (TextView) view.findViewById(R.id.textviewId_giohang);
-            holder.txtGia_giohang = (TextView) view.findViewById(R.id.textviewGiaCustom_giohang);
-            holder.txtSoLuong = (TextView) view.findViewById(R.id.textviewSoLuong_giohang);
+            holder.txtTenBan = (TextView) view.findViewById(R.id.textviewTenBanCustom_giohang);
             holder.txtThanhTien = (TextView) view.findViewById(R.id.textviewThanhTien_giohang);
             holder.imgDelete_giohang = (ImageView) view.findViewById(R.id.imageviewDelete_giohang);
 
@@ -76,29 +75,29 @@ public class MonAnGioHangAdapter extends BaseAdapter {
         MonAnGioHang chonMon = chonMonList.get(i);
 
 
-        holder.txtTenMonAn_giohang.setText("Tên món:" + chonMon.getTenmon());
-        holder.txtId.setText("ID:" + chonMon.getId());
-        holder.txtGia_giohang.setText("Giá:" + chonMon.getDongia());
-        holder.txtSoLuong.setText("Số Lượng:" +chonMon.getSoluong() +"");
+        holder.txtTenMonAn_giohang.setText("Tên món: " + chonMon.getTenmon());
+        holder.txtId.setText("Số Hóa Đơn: " + chonMon.getId());
+        holder.txtTenBan.setText("Bàn: " +chonMon.getMaban() +"");
         // tạo 1 NumberFormat để định dạng số theo tiêu chuẩn của nước Anh
         Locale localeEN = new Locale("en", "EN");
         NumberFormat en = NumberFormat.getInstance(localeEN);
 
         // đối với số có kiểu long được định dạng theo chuẩn của nước Anh
         // thì phần ngàn của số được phân cách bằng dấu phẩy
-        holder.txtThanhTien.setText( "Thành Tiền: "+ en.format(chonMon.getThanhtien()) +" đ");
+        holder.txtThanhTien.setText( "Thành Tiền: "+ en.format(chonMon.getThanhtien()) +"đ");
 
 
         holder.imgDelete_giohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                XacNhanXoa(chonMon.getTenmon(), chonMon.getId());
+                XacNhanXoa(chonMon.getId());
             }
         });
 
         XemGioHang.lvdanhsachmongiohang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                MonAnGioHang chonMon = chonMonList.get(i);
                 Intent intent = new Intent(context, ThanhToanActivity.class);
                 intent.putExtra("data", chonMon);
                 context.startActivity(intent);
@@ -107,9 +106,9 @@ public class MonAnGioHangAdapter extends BaseAdapter {
 
         return view;
     }
-    public void XacNhanXoa(String ten, int id){
+    public void XacNhanXoa( int id){
         AlertDialog.Builder dialogXoa = new AlertDialog.Builder(context);
-        dialogXoa.setMessage("Bạn có muốn xóa đơn số " +ten + " không!");
+        dialogXoa.setMessage("Bạn có muốn xóa đơn số " +id + " không!");
         dialogXoa.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
