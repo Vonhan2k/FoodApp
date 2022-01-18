@@ -53,11 +53,11 @@ public class ChonMonActivity extends AppCompatActivity {
 
     ArrayList<BanAn> arrayBanAn;
     ArrayList<String> names = new ArrayList<String>();
-   /* String urlInsert = " http://192.168.1.3/food-menu-vhnhan/json/datmon/insert.php";
-    String urlgetData_BanAn = "http://192.168.1.3/food-menu-vhnhan/json/banan/getdata.php";*/
+   String urlInsert = " http://192.168.1.3/food-menu-vhnhan/json/datmon/insert.php";
+    String urlgetData_BanAn = "http://192.168.1.3/food-menu-vhnhan/json/banan/getdata.php";
 
-    String urlInsert = " http://192.168.1.6/food-menu-vhnhan/json/datmon/insert.php";
-    String urlgetData_BanAn = "http://192.168.1.6/food-menu-vhnhan/json/banan/getdata.php";
+//    String urlInsert = " http://192.168.1.6/food-menu-vhnhan/json/datmon/insert.php";
+//    String urlgetData_BanAn = "http://192.168.1.6/food-menu-vhnhan/json/banan/getdata.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

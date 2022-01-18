@@ -45,11 +45,11 @@ public class XemGioHang extends AppCompatActivity {
     MonAnGioHangAdapter adapterMonAn;
 
 
-   /* String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
-    String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";*/
+   String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/datmon/getdata.php";
+    String urlDelete = "http://192.168.1.3/food-menu-vhnhan/json/datmon/delete.php";
 
-    String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/datmon/getdata.php";
-    String urlDelete = "http://192.168.1.6/food-menu-vhnhan/json/datmon/delete.php";
+//    String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/datmon/getdata.php";
+//    String urlDelete = "http://192.168.1.6/food-menu-vhnhan/json/datmon/delete.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

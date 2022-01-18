@@ -94,7 +94,7 @@
 
                 <ImageView
                     android:layout_marginTop="@dimen/size_20dp"
-                    android:id="@+id/imageviewIconTrangChu"
+                    android:id="@+id/imageviewInfoApp"
                     android:layout_gravity="center"
                     android:src="@drawable/bill_50"
                     android:layout_width="@dimen/size_125dp"
@@ -107,7 +107,7 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="@dimen/size_20sp"
-                    android:text="@string/ibtn_home"
+                    android:text="Thông Tin Ứng Dụng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>

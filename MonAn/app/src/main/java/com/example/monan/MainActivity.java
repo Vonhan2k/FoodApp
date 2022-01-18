@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     ViewFlipper viewBanner;
     Animation enter, exit;
-    ImageView imgIconTrangChu, imgIconDatMon, imgIconQuanLy, imgIconMonAn;
+    ImageView imgIconInfoApp, imgIconDatMon, imgIconQuanLy, imgIconMonAn;
 
 
     @Override
@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Su kien click cac imgIcon
-        imgIconTrangChu.setOnClickListener(new View.OnClickListener() {
+        imgIconInfoApp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentTrangChu = new Intent(MainActivity.this, MainActivity.class);
+                Intent intentTrangChu = new Intent(MainActivity.this, thongtinungdung.class);
                 startActivity(intentTrangChu);
                 overridePendingTransition(0,0);
             }
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void AnhXa(){
         viewBanner = (ViewFlipper) findViewById(R.id.viewBanner);
-        imgIconTrangChu = (ImageView) findViewById(R.id.imageviewIconTrangChu);
+        imgIconInfoApp = (ImageView) findViewById(R.id.imageviewInfoApp);
         imgIconMonAn = (ImageView) findViewById(R.id.imageviewIconMonAn);
         imgIconDatMon = (ImageView) findViewById(R.id.imageviewDatMon);
         imgIconQuanLy = (ImageView) findViewById(R.id.imageviewIconQuanLy);

@@ -92,8 +92,8 @@ public class MonAnActivity extends AppCompatActivity {
 
     //Get dữ liệu món ăn theo loại món
     private void GetData(int maloai){
-//        String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/monan/getdata_id.php?maloai="+ maloai;
-        String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/monan/getdata_id.php?maloai="+ maloai;
+        String urlGetData =  "http://192.168.1.3/food-menu-vhnhan/json/monan/getdata_id.php?maloai="+ maloai;
+//        String urlGetData =  "http://192.168.1.6/food-menu-vhnhan/json/monan/getdata_id.php?maloai="+ maloai;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlGetData, null, new Response.Listener<JSONArray>() {
             @Override

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".thongtinungdung">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thực Đơn Điện Tử"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="@dimen/size_50dp"
+    />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/textView3"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:textSize= "@dimen/size_50dp"
+        android:layout_height="wrap_content"
+        android:text="Tác Giả"
+        android:textStyle="italic"
+        tools:layout_editor_absoluteX="158dp"
+        tools:layout_editor_absoluteY="143dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        >
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:text="Hữu Nhân" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thái Ngọc" />
+    </LinearLayout>
+    <TextView
+        android:text="Danh sách chức năng"
+        android:layout_width="match_parent"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_height="wrap_content">
+    </TextView>
+    <ListView
+        android:id="@+id/lvDanhSachChucNang"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"/>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:text="version: 2022"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:gravity="center"
+        />
+</LinearLayout>
