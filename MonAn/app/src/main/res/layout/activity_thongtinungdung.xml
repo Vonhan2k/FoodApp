@@ -40,17 +40,6 @@
             />
 
 
-
-    <TextView
-        android:textColor="@color/black"
-        android:layout_marginTop="@dimen/size_20dp"
-        android:text="Danh sách chức năng"
-        android:layout_width="match_parent"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_height="wrap_content">
-    </TextView>
     <ListView
         android:id="@+id/lvDanhSachChucNang"
         android:layout_width="match_parent"

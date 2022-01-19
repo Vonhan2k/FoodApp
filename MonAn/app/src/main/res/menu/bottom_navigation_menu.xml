@@ -14,14 +14,20 @@
     <item
         android:id="@+id/btnDanhSach"
         android:enabled="true"
-        android:icon="@drawable/employee"
+        android:icon="@drawable/bill_50"
         android:title="Danh sách Gọi Món"/>
 
     <item
         android:id="@+id/btnQuanLy"
         android:enabled="true"
-        android:icon="@drawable/employee"
+        android:icon="@drawable/serve_64"
         android:title="@string/ibtn_quanly"/>
+
+    <item
+        android:id="@+id/btnThongTin"
+        android:enabled="true"
+        android:icon="@drawable/info_64"
+        android:title="Thông Tin"/>
 
 
 </menu>

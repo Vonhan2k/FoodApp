@@ -140,6 +140,11 @@ public class LoaiMonAnActivity extends AppCompatActivity {
                     } else
                         Toast.makeText(LoaiMonAnActivity.this, "Bạn không có quyền truy cập!", Toast.LENGTH_SHORT).show();
                     return true;
+                case R.id.btnThongTin:
+                    Intent intentThongTin = new Intent(LoaiMonAnActivity.this, thongtinungdung.class);
+                    startActivity(intentThongTin);
+                    drawerLayout.closeDrawers();
+                    return true;
             }
             return false;
         }

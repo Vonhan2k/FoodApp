@@ -162,6 +162,11 @@ public class MonAnActivity extends AppCompatActivity {
                     startActivity(intentQuanLy);
                     drawerLayout.closeDrawers();
                     return true;
+                case R.id.btnThongTin:
+                    Intent intentThongTin = new Intent(MonAnActivity.this, thongtinungdung.class);
+                    startActivity(intentThongTin);
+                    drawerLayout.closeDrawers();
+                    return true;
 
             }
             return false;
