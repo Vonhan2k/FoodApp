@@ -61,10 +61,7 @@ public class AddMonAnActivity extends AppCompatActivity {
     ArrayList<String> names = new ArrayList<String>();
 
 
-
-   /* String urlGetData = " http://192.168.1.3/food-menu-vhnhan/json/loaimon/getdata.php";
-    String urlInsert = " http://192.168.1.3/food-menu-vhnhan/json/monan/insert.php";*/
-
+    //Thay đổi địa chỉ theo ip của máy, các url khác thay đổi tương tự
     String urlGetData = " http://192.168.1.11/food-menu-vhnhan/json/loaimon/getdata.php";
     String urlInsert = " http://192.168.1.11/food-menu-vhnhan/json/monan/insert.php";
 
