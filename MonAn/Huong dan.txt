@@ -1,8 +1,0 @@
-Tài khoản trong App
-
-- Nhân viên:
- + tendangnhap: vonhan2k
- + matkhau: 123456
-- Admin:
- + tendangnhap: thaingoc2k
- + tendangnhap: admin

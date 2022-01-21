@@ -1,0 +1,10 @@
+- Khởi động Xampp thêm csdl_goimon vào phpmyAdmin.
+- Thay đổi địa chỉ ip trong app theo địa chỉ ip của máy mình.
+* Tài khoản trong App
+
+- Nhân viên:
+ + tendangnhap: vonhan2k
+ + matkhau: 123456
+- Admin:
+ + tendangnhap: thaingoc2k
+ + tendangnhap: admin
